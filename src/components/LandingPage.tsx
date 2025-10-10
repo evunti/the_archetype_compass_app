@@ -20,17 +20,17 @@ export default function LandingPage({ onStartTest }: LandingPageProps) {
       </div>
 
       <div className="grid grid-cols-2 md:grid-cols-4 gap-4 max-w-3xl mx-auto">
-        <div className="bg-sky-100 p-4 rounded-lg border-2 border-sky-200">
+        <div className="bg-emerald-100 p-4 rounded-lg border-2 border-emerald-200">
           <div className="text-2xl mb-2">🤠</div>
-          <h3 className="font-semibold text-sky-800">Cowboy</h3>
-          <p className="text-sm text-sky-600">
+          <h3 className="font-semibold text-emerald-800">Cowboy</h3>
+          <p className="text-sm text-emerald-600">
             Innocent · Optimistic · Trusting
           </p>
         </div>
-        <div className="bg-emerald-100 p-4 rounded-lg border-2 border-emerald-200">
+        <div className="bg-sky-100 p-4 rounded-lg border-2 border-sky-200">
           <div className="text-2xl mb-2">☠️</div>
-          <h3 className="font-semibold text-emerald-800">Pirate</h3>
-          <p className="text-sm text-emerald-600">
+          <h3 className="font-semibold text-sky-800">Pirate</h3>
+          <p className="text-sm text-sky-600">
             Easygoing · Balanced · Free-spirited
           </p>
         </div>

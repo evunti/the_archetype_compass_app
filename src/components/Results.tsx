@@ -1,10 +1,11 @@
 import { useQuery } from "convex/react";
 import { api } from "../../convex/_generated/api";
 import { toast } from "sonner";
+import ScoreBreakdown from "./ScoreBreakdown";
 
 const archetypeColors = {
-  cowboy: "sky",
-  pirate: "emerald",
+  cowboy: "emerald",
+  pirate: "sky",
   werewolf: "orange",
   vampire: "purple",
 };
@@ -170,36 +171,11 @@ export default function Results({ sessionId, onRetakeTest }: ResultsProps) {
       </div>
 
       {/* Bar Chart */}
-      <div className="bg-white rounded-lg shadow-lg p-6">
-        <h4 className="text-xl font-semibold text-gray-800 mb-6 text-center">
-          Score Breakdown
-        </h4>
-        <div className="space-y-6">
-          {Object.entries(scores).map(([type, score]) => (
-            <div key={type} className="flex items-center space-x-4">
-              <div className="flex items-center space-x-3 w-32">
-                <div className="text-xl">
-                  {archetypeEmojis[type as keyof typeof archetypeEmojis]}
-                </div>
-                <div className="text-sm font-medium text-gray-700 capitalize">
-                  {type}
-                </div>
-              </div>
-              <div className="flex-1 bg-gray-200 rounded-full h-8 relative">
-                <div
-                  className={`bg-${archetypeColors[type as keyof typeof archetypeColors]}-500 h-8 rounded-full transition-all duration-1000 ease-out`}
-                  style={{
-                    width: `${percentages[type as keyof typeof percentages]}%`,
-                  }}
-                ></div>
-                <div className="absolute inset-0 flex items-center justify-center text-sm font-semibold text-white">
-                  {percentages[type as keyof typeof percentages]}%
-                </div>
-              </div>
-            </div>
-          ))}
-        </div>
-      </div>
+      <ScoreBreakdown
+        scores={scores}
+        percentages={percentages}
+        archetypeEmojis={archetypeEmojis}
+      />
 
       {/* Quadrant Chart */}
       <div className="bg-white rounded-lg shadow-lg p-6">
