@@ -13,32 +13,40 @@ export default function LandingPage({ onStartTest }: LandingPageProps) {
           The Archetype Compass
         </h1>
         <p className="text-xl text-gray-600 max-w-2xl mx-auto">
-          Discover your inner archetype through our unique personality assessment. 
-          Are you a Cowboy, Pirate, Werewolf, or Vampire? Find out where you stand 
-          on the spectrum of emotion and control.
+          Discover your inner archetype through our unique personality
+          assessment. Are you a Cowboy, Pirate, Werewolf, or Vampire? Find out
+          where you stand on the spectrum of emotion and control.
         </p>
       </div>
 
       <div className="grid grid-cols-2 md:grid-cols-4 gap-4 max-w-3xl mx-auto">
         <div className="bg-sky-100 p-4 rounded-lg border-2 border-sky-200">
-          <div className="text-2xl mb-2">🐴</div>
+          <div className="text-2xl mb-2">🤠</div>
           <h3 className="font-semibold text-sky-800">Cowboy</h3>
-          <p className="text-sm text-sky-600">Innocent · Optimistic · Trusting</p>
+          <p className="text-sm text-sky-600">
+            Innocent · Optimistic · Trusting
+          </p>
         </div>
         <div className="bg-emerald-100 p-4 rounded-lg border-2 border-emerald-200">
           <div className="text-2xl mb-2">☠️</div>
           <h3 className="font-semibold text-emerald-800">Pirate</h3>
-          <p className="text-sm text-emerald-600">Easygoing · Balanced · Free-spirited</p>
+          <p className="text-sm text-emerald-600">
+            Easygoing · Balanced · Free-spirited
+          </p>
         </div>
         <div className="bg-orange-100 p-4 rounded-lg border-2 border-orange-200">
           <div className="text-2xl mb-2">🐺</div>
           <h3 className="font-semibold text-orange-800">Werewolf</h3>
-          <p className="text-sm text-orange-600">Emotional · Reactive · Passionate</p>
+          <p className="text-sm text-orange-600">
+            Emotional · Reactive · Passionate
+          </p>
         </div>
         <div className="bg-purple-100 p-4 rounded-lg border-2 border-purple-200">
           <div className="text-2xl mb-2">🦇</div>
           <h3 className="font-semibold text-purple-800">Vampire</h3>
-          <p className="text-sm text-purple-600">Controlled · Dominant · Intimidating</p>
+          <p className="text-sm text-purple-600">
+            Controlled · Dominant · Intimidating
+          </p>
         </div>
       </div>
 
@@ -53,7 +61,9 @@ export default function LandingPage({ onStartTest }: LandingPageProps) {
 
       <Unauthenticated>
         <div className="space-y-6">
-          <p className="text-gray-600">Sign in to take the test and save your results</p>
+          <p className="text-gray-600">
+            Sign in to take the test and save your results
+          </p>
           <div className="max-w-md mx-auto">
             <SignInForm />
           </div>

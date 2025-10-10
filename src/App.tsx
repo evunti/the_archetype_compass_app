@@ -31,7 +31,7 @@ export default function App() {
   return (
     <div className="min-h-screen flex flex-col bg-gray-50">
       <header className="sticky top-0 z-10 bg-white/80 backdrop-blur-sm h-16 flex justify-between items-center border-b shadow-sm px-4">
-        <button 
+        <button
           onClick={() => setCurrentPage("landing")}
           className="text-xl font-semibold text-purple-600 hover:text-purple-700 transition-colors"
         >
@@ -41,7 +41,7 @@ export default function App() {
       </header>
       <main className="flex-1 flex items-center justify-center p-4">
         <div className="w-full max-w-4xl mx-auto">
-          <Content 
+          <Content
             currentPage={currentPage}
             sessionId={sessionId}
             onStartTest={handleStartTest}
@@ -55,12 +55,12 @@ export default function App() {
   );
 }
 
-function Content({ 
-  currentPage, 
-  sessionId, 
-  onStartTest, 
-  onTestComplete, 
-  onRetakeTest 
+function Content({
+  currentPage,
+  sessionId,
+  onStartTest,
+  onTestComplete,
+  onRetakeTest,
 }: {
   currentPage: Page;
   sessionId: string;
