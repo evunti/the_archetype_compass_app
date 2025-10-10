@@ -1,5 +1,3 @@
-import React from "react";
-
 interface ScoreBreakdownProps {
   scores: Record<string, number>;
   percentages: Record<string, number>;
