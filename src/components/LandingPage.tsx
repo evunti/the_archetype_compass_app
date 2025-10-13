@@ -15,7 +15,7 @@ export default function LandingPage({ onStartTest }: LandingPageProps) {
         <p className="text-xl text-gray-600 max-w-2xl mx-auto">
           Discover your inner archetype through our unique personality
           assessment. Are you a Cowboy, Pirate, Werewolf, or Vampire? Find out
-          where you stand on the spectrum of emotion and control.
+          where you stand.
         </p>
       </div>
 
