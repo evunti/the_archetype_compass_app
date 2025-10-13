@@ -185,7 +185,7 @@ export default function Results({ sessionId, onRetakeTest }: ResultsProps) {
                       )
                       .join(" + ")}
               </span>
-              <span>{dominantType === "all four" ? "🧭" : "🧭"}</span>
+              <span>{dominantType === "all four" ? "⚖️" : "⚖️"}</span>
             </>
           ) : (
             <>
