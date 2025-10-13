@@ -112,8 +112,23 @@ export default function Results({ sessionId, onRetakeTest }: ResultsProps) {
   }
 
   const { scores, dominantType } = result;
-  const personality =
-    personalityBlurbs[dominantType as keyof typeof personalityBlurbs];
+
+  // Normalize dominantType order for combos so 'pirate+cowboy' matches 'cowboy+pirate'
+  function normalizeTypeKey(type: string): string {
+    if (type === "all four") return "all four";
+    const parts = type.split("+");
+    if (parts.length === 1) return type;
+    return parts.sort().join("+");
+  }
+
+  const normalizedType = normalizeTypeKey(dominantType);
+  const personality = personalityBlurbs[
+    normalizedType as keyof typeof personalityBlurbs
+  ] || {
+    title: "Unknown Result",
+    description:
+      "Your result is unique! (Or there was a technical issue.) Please retake the test or contact support if this keeps happening.",
+  };
 
   const handleShare = () => {
     const shareText = `I just discovered I'm ${personality.title} on The Archetype Compass! 🧭`;
