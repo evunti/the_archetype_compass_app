@@ -165,7 +165,7 @@ export default function LandingPage({ onStartTest }: LandingPageProps) {
           },
           {
             key: "all four",
-            emoji: "🧭",
+            emoji: "⚖️",
             title: "Balanced Soul",
             description:
               "You embody all four archetypes, making you versatile, adaptable, passionate, and wise. Your ability to draw from different aspects of your personality is remarkable—just remember to stay grounded in your core values.",
