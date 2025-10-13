@@ -122,14 +122,14 @@ export default function LandingPage({ onStartTest }: LandingPageProps) {
               "You're adventurous, deeply feeling, and spontaneous. Your zest for life is infectious, but remember to build in time for rest and reflection to sustain your energetic approach.",
           },
           {
-            key: "Pirate+Vampire",
+            key: "Pirate + Vampire",
             emoji: "☠️🦇",
             title: "The Smooth Operator",
             description:
               "You combine poise with charm, making you naturally magnetic. While your composed exterior serves you well, sharing your honest thoughts and feelings will create deeper connections.",
           },
           {
-            key: "Werewolf+Vampire",
+            key: "Werewolf + Vampire",
             emoji: "🐺🦇",
             title: "The Storm and the Shadow",
             description:
