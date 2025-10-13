@@ -66,105 +66,105 @@ export default function LandingPage({ onStartTest }: LandingPageProps) {
         {/* Archetype Results List */}
         {[
           {
-            key: "cowboy",
+            key: "Cowboy",
             emoji: "🤠",
             title: "The Pure Spirit",
             description:
               "You are optimistic, kind, sincere, and hopeful. Your genuine nature draws people to you, but you may need to work on setting better boundaries to protect your generous heart.",
           },
           {
-            key: "pirate",
+            key: "Pirate",
             emoji: "☠️",
             title: "The Balanced Rogue",
             description:
               "You are calm, adaptable, funny, and resilient. You navigate life's storms with grace and humor, though you should consider showing your deeper, more vulnerable side more often.",
           },
           {
-            key: "werewolf",
+            key: "Werewolf",
             emoji: "🐺",
             title: "The Wild Heart",
             description:
               "You are intense, emotional, and fiercely loyal. Your passion is your strength, but learning to channel it constructively will help you achieve your goals without burning out.",
           },
           {
-            key: "vampire",
+            key: "Vampire",
             emoji: "🦇",
             title: "The Power Player",
             description:
               "You are confident, strategic, and naturally influential. Your ability to lead and persuade is remarkable, though showing vulnerability occasionally will deepen your connections.",
           },
           {
-            key: "cowboy+pirate",
+            key: "Cowboy + Pirate",
             emoji: "🤠☠️",
             title: "The Peaceful Drifter",
             description:
               "You blend optimism with adaptability, creating a harmonious approach to life. While you value peace and go with the flow, remember that asserting yourself when needed is equally important.",
           },
           {
-            key: "cowboy+werewolf",
+            key: "Cowboy + Werewolf",
             emoji: "🤠🐺",
             title: "The Tender Wildling",
             description:
               "You combine warmth with intense emotion, making you deeply caring yet sometimes reactive. Finding grounding practices will help you channel your passionate nature more effectively.",
           },
           {
-            key: "cowboy+vampire",
+            key: "Cowboy + Vampire",
             emoji: "🤠🦇",
             title: "The Gentle Influencer",
             description:
               "You merge moral conviction with persuasive power, making you a natural leader who inspires through kindness. Leading with transparency will enhance your already strong influence.",
           },
           {
-            key: "pirate+werewolf",
+            key: "Pirate + Werewolf",
             emoji: "☠️🐺",
             title: "The Passionate Rebel",
             description:
               "You're adventurous, deeply feeling, and spontaneous. Your zest for life is infectious, but remember to build in time for rest and reflection to sustain your energetic approach.",
           },
           {
-            key: "pirate+vampire",
+            key: "Pirate+Vampire",
             emoji: "☠️🦇",
             title: "The Smooth Operator",
             description:
               "You combine poise with charm, making you naturally magnetic. While your composed exterior serves you well, sharing your honest thoughts and feelings will create deeper connections.",
           },
           {
-            key: "werewolf+vampire",
+            key: "Werewolf+Vampire",
             emoji: "🐺🦇",
             title: "The Storm and the Shadow",
             description:
               "You blend emotional intensity with strategic thinking, creating a powerful combination. Balancing your compassionate heart with your desire for control will make you an exceptional leader.",
           },
           {
-            key: "cowboy+pirate+werewolf",
+            key: "Cowboy + Pirate + Werewolf",
             emoji: "🤠☠️🐺",
             title: "The Golden-Hearted Hothead",
             description:
               "You're joyful, passionate, and full of life. Your enthusiasm is contagious, but learning to slow down and think before acting will help you avoid unnecessary conflicts and regrets.",
           },
           {
-            key: "pirate+werewolf+vampire",
+            key: "Pirate + Werewolf + Vampire",
             emoji: "☠️🐺🦇",
             title: "The Charismatic Wildcard",
             description:
               "You're a magnetic leader with emotional depth and strategic thinking. Your natural charisma draws people in, but creating more structure in your approach will help you achieve lasting success.",
           },
           {
-            key: "cowboy+pirate+vampire",
+            key: "Cowboy + Pirate + Vampire",
             emoji: "🤠☠️🦇",
             title: "The Gentle Strategist",
             description:
               "You combine kindness with effectiveness, making you both approachable and capable. Your balanced nature is a strength—just remember to maintain firm boundaries when necessary.",
           },
           {
-            key: "cowboy+werewolf+vampire",
+            key: "Cowboy + Werewolf + Vampire",
             emoji: "🤠🐺🦇",
             title: "The Devoted Manipulator",
             description:
               "You blend emotional depth with moral conviction and influence. Your ability to lead with both heart and strategy is powerful—ensure you're always leading with empathy at the forefront.",
           },
           {
-            key: "all four",
+            key: "All Four",
             emoji: "⚖️",
             title: "Balanced Soul",
             description:
@@ -177,6 +177,9 @@ export default function LandingPage({ onStartTest }: LandingPageProps) {
           >
             <div className="text-5xl mb-4 drop-shadow-sm group-hover:scale-110 transition-transform">
               {emoji}
+            </div>
+            <div className="text-xs font-mono text-gray-400 mb-1 tracking-wide select-all">
+              {key}
             </div>
             <h3 className="font-bold text-xl text-gray-800 mb-2 text-center tracking-tight group-hover:text-purple-700 transition-colors">
               {title}
