@@ -50,25 +50,14 @@ export default function LandingPage({ onStartTest }: LandingPageProps) {
         </div>
       </div>
 
-      <Authenticated>
+      <div className="flex justify-center">
         <button
           onClick={onStartTest}
           className="bg-purple-600 hover:bg-purple-700 text-white font-bold py-4 px-8 rounded-lg text-xl transition-colors shadow-lg hover:shadow-xl"
         >
           Take the Test
         </button>
-      </Authenticated>
-
-      <Unauthenticated>
-        <div className="space-y-6">
-          <p className="text-gray-600">
-            Sign in to take the test and save your results
-          </p>
-          <div className="max-w-md mx-auto">
-            <SignInForm />
-          </div>
-        </div>
-      </Unauthenticated>
+      </div>
     </div>
   );
 }
