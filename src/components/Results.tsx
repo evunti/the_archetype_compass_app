@@ -157,10 +157,31 @@ export default function Results({ sessionId, onRetakeTest }: ResultsProps) {
 
       {/* Main Result */}
       <div className="bg-white rounded-lg shadow-lg p-8 text-center">
-        <div className="text-6xl mb-4">
-          {dominantType.includes("+") || dominantType === "all four"
-            ? "🧭"
-            : archetypeEmojis[dominantType as keyof typeof archetypeEmojis]}
+        <div className="text-6xl mb-4 flex flex-col items-center gap-1">
+          {dominantType.includes("+") || dominantType === "all four" ? (
+            <>
+              <span className="text-2xl font-semibold text-gray-700">
+                {dominantType === "all four"
+                  ? "All Four"
+                  : dominantType
+                      .split("+")
+                      .map(
+                        (type) => type.charAt(0).toUpperCase() + type.slice(1)
+                      )
+                      .join(" + ")}
+              </span>
+              <span>{dominantType === "all four" ? "🧭" : "🧭"}</span>
+            </>
+          ) : (
+            <>
+              <span className="text-2xl font-semibold text-gray-700">
+                {dominantType.charAt(0).toUpperCase() + dominantType.slice(1)}
+              </span>
+              <span>
+                {archetypeEmojis[dominantType as keyof typeof archetypeEmojis]}
+              </span>
+            </>
+          )}
         </div>
         <h3 className="text-3xl font-bold text-gray-800 mb-4">
           {personality.title}
