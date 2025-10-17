@@ -9,13 +9,11 @@ export default function ScoreBreakdown({
   percentages,
   archetypeEmojis,
 }: ScoreBreakdownProps) {
-  // ✅ Safe Tailwind color mapping (adjust these as you like)
   const colorClasses: Record<string, string> = {
     cowboy: "bg-emerald-500",
     pirate: "bg-sky-500",
     vampire: "bg-purple-500",
     werewolf: "bg-orange-500",
-    // add more if you have additional archetypes
   };
 
   return (
