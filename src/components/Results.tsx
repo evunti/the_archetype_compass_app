@@ -238,17 +238,16 @@ export default function Results({ sessionId, onRetakeTest }: ResultsProps) {
                   "Agree",
                   "Strongly Agree",
                 ];
-                let answerDisplay = "(No answer)";
-                if (typeof answerIdx === "number" && answerIdx > 0 && answerIdx <= 5) {
-                  answerDisplay = answerLabels[answerIdx - 1];
-                }
                 return (
                   <li key={q.id} className="border-b pb-2">
                     <div className="font-semibold">
                       Q{idx + 1}: {q.text}
                     </div>
                     <div className="text-purple-700 mt-1">
-                      <span className="font-medium">Your answer:</span> {answerDisplay}
+                      <span className="font-medium">Your answer:</span>{" "}
+                      {answerLabels[
+                        typeof answerIdx === "number" ? answerIdx : 2
+                      ] ?? "(No answer)"}
                     </div>
                   </li>
                 );
