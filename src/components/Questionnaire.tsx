@@ -3,7 +3,7 @@ import { useMutation } from "convex/react";
 import { api } from "../../convex/_generated/api";
 import { toast } from "sonner";
 
-const questions = [
+export const questions = [
   // Cowboy (The Pure Spirit)
   {
     id: "q1",

@@ -87,6 +87,14 @@ export const getTestResult = query({
       .order("desc")
       .first();
 
-    return result;
+    if (!result) return null;
+    // Only return the fields needed for the frontend
+    return {
+      scores: result.scores,
+      dominantType: result.dominantType,
+      answers: result.answers,
+      sessionId: result.sessionId,
+      completedAt: result.completedAt,
+    };
   },
 });

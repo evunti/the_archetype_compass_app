@@ -1,7 +1,9 @@
+import { useState } from "react";
 import { useQuery } from "convex/react";
 import { api } from "../../convex/_generated/api";
 import { toast } from "sonner";
 import ScoreBreakdown from "./ScoreBreakdown";
+import { questions } from "./Questionnaire";
 
 const archetypeColors = {
   cowboy: "emerald",
@@ -101,6 +103,7 @@ interface ResultsProps {
 }
 
 export default function Results({ sessionId, onRetakeTest }: ResultsProps) {
+  const [showAnswers, setShowAnswers] = useState(false);
   const result = useQuery(api.tests.getTestResult, { sessionId });
 
   if (!result) {
@@ -111,7 +114,7 @@ export default function Results({ sessionId, onRetakeTest }: ResultsProps) {
     );
   }
 
-  const { scores, dominantType } = result;
+  const { scores, dominantType, answers } = result;
 
   // Normalize dominantType order for combos so 'pirate+cowboy' matches 'cowboy+pirate'
   function normalizeTypeKey(type: string): string {
@@ -206,7 +209,54 @@ export default function Results({ sessionId, onRetakeTest }: ResultsProps) {
         </p>
       </div>
 
-      {/* Bar Chart */}
+      {/* View Answers Button */}
+      <div className="flex justify-center mb-4">
+        <button
+          className="px-4 py-2 bg-gray-200 rounded hover:bg-gray-300 text-gray-800 font-semibold"
+          onClick={() => setShowAnswers((v) => !v)}
+        >
+          {showAnswers ? "Hide Test Answers" : "View Test Answers"}
+        </button>
+      </div>
+
+      {/* Answers Modal/Section */}
+      {showAnswers && answers && (
+        <div className="bg-white rounded-lg shadow-lg p-6 mb-6">
+          <h4 className="text-xl font-bold mb-4 text-center">
+            Your Test Answers
+          </h4>
+          <ol className="space-y-4">
+            {(questions as Array<{ id: string; text: string }>).map(
+              (q, idx) => {
+                const answerIdx = Array.isArray(answers)
+                  ? answers[idx]
+                  : undefined;
+                const answerLabels = [
+                  "Strongly Disagree",
+                  "Disagree",
+                  "Neutral",
+                  "Agree",
+                  "Strongly Agree",
+                ];
+                let answerDisplay = "(No answer)";
+                if (typeof answerIdx === "number" && answerIdx > 0 && answerIdx <= 5) {
+                  answerDisplay = answerLabels[answerIdx - 1];
+                }
+                return (
+                  <li key={q.id} className="border-b pb-2">
+                    <div className="font-semibold">
+                      Q{idx + 1}: {q.text}
+                    </div>
+                    <div className="text-purple-700 mt-1">
+                      <span className="font-medium">Your answer:</span> {answerDisplay}
+                    </div>
+                  </li>
+                );
+              }
+            )}
+          </ol>
+        </div>
+      )}
       <ScoreBreakdown
         scores={scores}
         percentages={percentages}
