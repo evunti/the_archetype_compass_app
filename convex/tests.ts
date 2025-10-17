@@ -2,6 +2,26 @@ import { mutation, query } from "./_generated/server";
 import { v } from "convex/values";
 import { getAuthUserId } from "@convex-dev/auth/server";
 
+// ✅ Query to fetch all test results for a user
+export const getAllTestResults = query({
+  args: { userId: v.optional(v.string()) },
+  handler: async (ctx, args) => {
+    // If userId is provided, filter by userId, else return all
+    let results;
+    if (args.userId) {
+      results = await ctx.db
+        .query("testResults")
+        .withIndex("by_session")
+        .order("desc")
+        .collect();
+      results = results.filter((result) => result.userId === args.userId);
+    } else {
+      results = await ctx.db.query("testResults").order("desc").collect();
+    }
+    return results;
+  },
+});
+
 // ✅ Save test result mutation
 export const saveTestResult = mutation({
   args: {
@@ -32,16 +52,14 @@ export const saveTestResult = mutation({
     const maxScore = Math.max(cowboy, pirate, werewolf, vampire);
     const topTypes = Object.entries(scores)
       .filter(([_, score]) => score >= maxScore - 3)
-      .map(([type]) => type)
+      .map(([type]) => type.toLowerCase())
       .sort();
 
     let dominantType: string;
     if (topTypes.length === 4) {
-      dominantType = "All Four";
-    } else if (topTypes.length === 3) {
-      dominantType = topTypes.join(" + ");
-    } else if (topTypes.length === 2) {
-      dominantType = topTypes.join(" + ");
+      dominantType = "all four";
+    } else if (topTypes.length > 1) {
+      dominantType = topTypes.join("+");
     } else {
       dominantType = topTypes[0];
     }
