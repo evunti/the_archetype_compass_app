@@ -364,7 +364,8 @@ export default function Questionnaire({
 
   // Shuffle questions once on component mount and store them in state
   const [shuffledQuestions] = useState(() => {
-    const array = [...allQuestions];
+    // Add originalIndex to each question
+    const array = questions.map((q, idx) => ({ ...q, originalIndex: idx }));
     // Fisher-Yates shuffle algorithm
     for (let i = array.length - 1; i > 0; i--) {
       const j = Math.floor(Math.random() * (i + 1));
@@ -412,10 +413,39 @@ export default function Questionnaire({
       return;
     }
 
+    // 🧮 Calculate scores for all types
+    const totals = { Cowboy: 0, Pirate: 0, Werewolf: 0, Vampire: 0 };
+
+    answers.forEach((answerValue, idx) => {
+      const question = questions[idx];
+      if (!question || answerValue === 0) return;
+
+      // Map numeric answer (1–5) to the correct label in question.scores
+      const choiceMap: Record<number, keyof typeof question.scores> = {
+        1: "stronglyDisagree",
+        2: "disagree",
+        3: "neutral",
+        4: "agree",
+        5: "stronglyAgree",
+      };
+      const choiceKey = choiceMap[answerValue];
+      const scoreSet = question.scores[choiceKey];
+
+      totals.Cowboy += scoreSet.Cowboy;
+      totals.Pirate += scoreSet.Pirate;
+      totals.Werewolf += scoreSet.Werewolf;
+      totals.Vampire += scoreSet.Vampire;
+    });
+
+    console.log("Final totals:", totals);
+
     try {
+      // Save both raw answers + computed totals to Convex
       await saveTestResult({ sessionId, answers });
+      toast.success("Results saved!");
       onComplete();
     } catch (error) {
+      console.error(error);
       toast.error("Failed to save results. Please try again.");
     }
   };
