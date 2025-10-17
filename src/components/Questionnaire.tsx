@@ -324,33 +324,6 @@ const questions = [
   },
 ];
 
-// const questions = [
-//   {
-//     id: "65b86e3c-34de-4dd0-9eff-0efa8f67ba57",
-//     text: "I tend to see the best in people, even when others don't.",
-//     agree: "cowboy",
-//     disagree: "vampire",
-//     scores: {
-//       disagree: { Cowboy: 5, Pirate: 1, Werewolf: 1, Vampire: 1 },
-//       neutral: { Cowboy: 3, Pirate: 3, Werewolf: 3, Vampire: 3 },
-//       agree: { Cowboy: 1, Pirate: 0, Werewolf: 0.2, Vampire: 1 },
-//     },
-//   },
-// ];
-
-// strongly disagree for disagree category = 2
-// disagree for disagree category = 1
-// neutral = 0
-// agree for agree category = 1
-// strongly agree for agree category = 2
-
-// const answers = [
-//   {
-//     question_id: "65b86e3c-34de-4dd0-9eff-0efa8f67ba57",
-//     answer: "agree",
-//   },
-// ];
-
 interface QuestionnaireProps {
   sessionId: string;
   onComplete: () => void;
