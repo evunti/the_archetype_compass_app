@@ -330,25 +330,6 @@ export default function Questionnaire({
   sessionId,
   onComplete,
 }: QuestionnaireProps) {
-  // ...existing code...
-  // Add keydown handler for Enter
-  React.useEffect(() => {
-    const handleKeyDown = (e: KeyboardEvent) => {
-      if (e.key === "Enter") {
-        // Only allow if an answer is selected
-        const originalIndex = shuffledQuestions[currentQuestionIndex].originalIndex;
-        if (answers[originalIndex] !== 0) {
-          if (currentQuestionIndex < 27) {
-            setCurrentQuestionIndex((idx) => idx + 1);
-          } else {
-            handleSubmit();
-          }
-        }
-      }
-    };
-    window.addEventListener("keydown", handleKeyDown);
-    return () => window.removeEventListener("keydown", handleKeyDown);
-  }, [currentQuestionIndex, answers]);
   const [currentQuestionIndex, setCurrentQuestionIndex] = useState(0);
 
   // Shuffle questions once on component mount and store them in state
@@ -370,20 +351,13 @@ export default function Questionnaire({
   React.useEffect(() => {
     const handleKeyDown = (e: KeyboardEvent) => {
       if (e.key === "Enter") {
-        // Only allow if an answer is selected
-        const originalIndex = shuffledQuestions[currentQuestionIndex].originalIndex;
-        if (answers[originalIndex] !== 0) {
-          if (currentQuestionIndex < 27) {
-            setCurrentQuestionIndex((idx) => idx + 1);
-          } else {
-            handleSubmit();
-          }
-        }
+        handleNext();
       }
     };
     window.addEventListener("keydown", handleKeyDown);
     return () => window.removeEventListener("keydown", handleKeyDown);
   }, [currentQuestionIndex, answers, shuffledQuestions]);
+
   const saveTestResult = useMutation(api.tests.saveTestResult);
 
   const handleAnswer = (value: number) => {
@@ -402,6 +376,14 @@ export default function Questionnaire({
 
     if (currentQuestionIndex < 27) {
       setCurrentQuestionIndex(currentQuestionIndex + 1);
+      // Clear answer for next question so it does not autofill
+      const nextOriginalIndex =
+        shuffledQuestions[currentQuestionIndex + 1].originalIndex;
+      setAnswers((prev) => {
+        const updated = [...prev];
+        updated[nextOriginalIndex] = 0;
+        return updated;
+      });
     } else {
       handleSubmit();
     }
