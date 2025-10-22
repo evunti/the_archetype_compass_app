@@ -2,6 +2,27 @@ import { mutation, query } from "./_generated/server";
 import { v } from "convex/values";
 import { getAuthUserId } from "@convex-dev/auth/server";
 
+// ✅ Query to fetch all test results for a user
+export const getAllTestResults = query({
+  args: { userId: v.optional(v.string()) },
+  handler: async (ctx, args) => {
+    // If userId is provided, filter by userId, else return all
+    let results;
+    if (args.userId) {
+      results = await ctx.db
+        .query("testResults")
+        .withIndex("by_session")
+        .order("desc")
+        .collect();
+      results = results.filter((result) => result.userId === args.userId);
+    } else {
+      results = await ctx.db.query("testResults").order("desc").collect();
+    }
+    return results;
+  },
+});
+
+// ✅ Save test result mutation
 export const saveTestResult = mutation({
   args: {
     sessionId: v.string(),
@@ -9,37 +30,41 @@ export const saveTestResult = mutation({
   },
   handler: async (ctx, args) => {
     const userId = await getAuthUserId(ctx);
-    
-    // Calculate scores based on new groupings
-    // Cowboy: questions 0-6 (7 questions)
-    // Pirate: questions 7-13 (7 questions) 
-    // Werewolf: questions 14-20 (7 questions)
-    // Vampire: questions 21-27 (7 questions)
+
+    // Calculate total scores per group
     const cowboy = args.answers.slice(0, 7).reduce((sum, val) => sum + val, 0);
     const pirate = args.answers.slice(7, 14).reduce((sum, val) => sum + val, 0);
-    const werewolf = args.answers.slice(14, 21).reduce((sum, val) => sum + val, 0);
-    const vampire = args.answers.slice(21, 28).reduce((sum, val) => sum + val, 0);
-    
-    const scores = { cowboy, pirate, werewolf, vampire };
-    
-    // Determine dominant type(s) - within 3-4 points as specified
+    const werewolf = args.answers
+      .slice(14, 21)
+      .reduce((sum, val) => sum + val, 0);
+    const vampire = args.answers
+      .slice(21, 28)
+      .reduce((sum, val) => sum + val, 0);
+
+    const scores = {
+      cowboy,
+      pirate,
+      werewolf,
+      vampire,
+    };
+
+    // Find dominant type(s)
     const maxScore = Math.max(cowboy, pirate, werewolf, vampire);
     const topTypes = Object.entries(scores)
       .filter(([_, score]) => score >= maxScore - 3)
-      .map(([type, _]) => type)
+      .map(([type]) => type.toLowerCase())
       .sort();
-    
+
     let dominantType: string;
     if (topTypes.length === 4) {
       dominantType = "all four";
-    } else if (topTypes.length === 3) {
-      dominantType = topTypes.join("+");
-    } else if (topTypes.length === 2) {
+    } else if (topTypes.length > 1) {
       dominantType = topTypes.join("+");
     } else {
       dominantType = topTypes[0];
     }
-    
+
+    // Save to DB
     const resultId = await ctx.db.insert("testResults", {
       userId: userId || undefined,
       sessionId: args.sessionId,
@@ -48,8 +73,8 @@ export const saveTestResult = mutation({
       dominantType,
       completedAt: Date.now(),
     });
-    
-    return resultId;
+
+    return { resultId, scores, dominantType };
   },
 });
 
@@ -61,7 +86,15 @@ export const getTestResult = query({
       .withIndex("by_session", (q) => q.eq("sessionId", args.sessionId))
       .order("desc")
       .first();
-    
-    return result;
+
+    if (!result) return null;
+    // Only return the fields needed for the frontend
+    return {
+      scores: result.scores,
+      dominantType: result.dominantType,
+      answers: result.answers,
+      sessionId: result.sessionId,
+      completedAt: result.completedAt,
+    };
   },
 });
