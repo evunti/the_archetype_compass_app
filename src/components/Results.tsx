@@ -226,33 +226,37 @@ export default function Results({ sessionId, onRetakeTest }: ResultsProps) {
             Your Test Answers
           </h4>
           <ol className="space-y-4">
-            {(questions as Array<{ id: string; text: string }>).map(
-              (q, idx) => {
-                const answerIdx = Array.isArray(answers)
-                  ? answers[idx]
-                  : undefined;
-                const answerLabels = [
-                  "Strongly Disagree",
-                  "Disagree",
-                  "Neutral",
-                  "Agree",
-                  "Strongly Agree",
-                ];
-                return (
-                  <li key={q.id} className="border-b pb-2">
-                    <div className="font-semibold">
-                      Q{idx + 1}: {q.text}
-                    </div>
-                    <div className="text-purple-700 mt-1">
-                      <span className="font-medium">Your answer:</span>{" "}
-                      {answerLabels[
-                        typeof answerIdx === "number" ? answerIdx : 2
-                      ] ?? "(No answer)"}
-                    </div>
-                  </li>
-                );
+            {questions.map((q: { id: string; text: string }, idx: number) => {
+              const answerIdx = Array.isArray(answers)
+                ? answers[idx]
+                : undefined;
+              const answerLabels = [
+                "Strongly Disagree",
+                "Disagree",
+                "Neutral",
+                "Agree",
+                "Strongly Agree",
+              ];
+              let answerDisplay = "(No answer)";
+              if (
+                typeof answerIdx === "number" &&
+                answerIdx > 0 &&
+                answerIdx <= 5
+              ) {
+                answerDisplay = answerLabels[answerIdx - 1];
               }
-            )}
+              return (
+                <li key={q.id} className="border-b pb-2">
+                  <div className="font-semibold">
+                    Q{idx + 1}: {q.text}
+                  </div>
+                  <div className="text-purple-700 mt-1">
+                    <span className="font-medium">Your answer:</span>{" "}
+                    {answerDisplay}
+                  </div>
+                </li>
+              );
+            })}
           </ol>
         </div>
       )}

@@ -1,9 +1,9 @@
-import { useState } from "react";
+import React, { useState } from "react";
 import { useMutation } from "convex/react";
 import { api } from "../../convex/_generated/api";
 import { toast } from "sonner";
 
-export const questions = [
+export const questions: Array<{ id: string; text: string; scores: any }> = [
   // Cowboy (The Pure Spirit)
   {
     id: "q1",
@@ -11,7 +11,7 @@ export const questions = [
     scores: {
       stronglyDisagree: { Cowboy: 0, Pirate: 2, Werewolf: 1, Vampire: 5 },
       disagree: { Cowboy: 1, Pirate: 3, Werewolf: 2, Vampire: 4 },
-      neutral: { Cowboy: 3, Pirate: 3, Werewolf: 3, Vampire: 3 },
+      neutral: { Cowboy: 3, Pirate: 0, Werewolf: 0, Vampire: 0 },
       agree: { Cowboy: 4, Pirate: 2, Werewolf: 2, Vampire: 1 },
       stronglyAgree: { Cowboy: 5, Pirate: 1, Werewolf: 1, Vampire: 0 },
     },
@@ -22,7 +22,7 @@ export const questions = [
     scores: {
       stronglyDisagree: { Cowboy: 0, Pirate: 2, Werewolf: 1, Vampire: 5 },
       disagree: { Cowboy: 1, Pirate: 3, Werewolf: 2, Vampire: 4 },
-      neutral: { Cowboy: 3, Pirate: 3, Werewolf: 3, Vampire: 3 },
+      neutral: { Cowboy: 3, Pirate: 0, Werewolf: 0, Vampire: 0 },
       agree: { Cowboy: 4, Pirate: 2, Werewolf: 2, Vampire: 1 },
       stronglyAgree: { Cowboy: 5, Pirate: 1, Werewolf: 1, Vampire: 0 },
     },
@@ -33,7 +33,7 @@ export const questions = [
     scores: {
       stronglyDisagree: { Cowboy: 0, Pirate: 2, Werewolf: 2, Vampire: 5 },
       disagree: { Cowboy: 1, Pirate: 3, Werewolf: 3, Vampire: 4 },
-      neutral: { Cowboy: 3, Pirate: 3, Werewolf: 3, Vampire: 3 },
+      neutral: { Cowboy: 3, Pirate: 0, Werewolf: 0, Vampire: 0 },
       agree: { Cowboy: 4, Pirate: 2, Werewolf: 2, Vampire: 1 },
       stronglyAgree: { Cowboy: 5, Pirate: 1, Werewolf: 1, Vampire: 0 },
     },
@@ -44,7 +44,7 @@ export const questions = [
     scores: {
       stronglyDisagree: { Cowboy: 0, Pirate: 2, Werewolf: 1, Vampire: 5 },
       disagree: { Cowboy: 1, Pirate: 3, Werewolf: 2, Vampire: 4 },
-      neutral: { Cowboy: 3, Pirate: 3, Werewolf: 3, Vampire: 3 },
+      neutral: { Cowboy: 3, Pirate: 0, Werewolf: 0, Vampire: 0 },
       agree: { Cowboy: 4, Pirate: 2, Werewolf: 2, Vampire: 1 },
       stronglyAgree: { Cowboy: 5, Pirate: 1, Werewolf: 1, Vampire: 0 },
     },
@@ -55,7 +55,7 @@ export const questions = [
     scores: {
       stronglyDisagree: { Cowboy: 0, Pirate: 2, Werewolf: 1, Vampire: 5 },
       disagree: { Cowboy: 1, Pirate: 3, Werewolf: 2, Vampire: 4 },
-      neutral: { Cowboy: 3, Pirate: 3, Werewolf: 3, Vampire: 3 },
+      neutral: { Cowboy: 3, Pirate: 0, Werewolf: 0, Vampire: 0 },
       agree: { Cowboy: 4, Pirate: 2, Werewolf: 2, Vampire: 1 },
       stronglyAgree: { Cowboy: 5, Pirate: 1, Werewolf: 1, Vampire: 0 },
     },
@@ -66,7 +66,7 @@ export const questions = [
     scores: {
       stronglyDisagree: { Cowboy: 0, Pirate: 2, Werewolf: 1, Vampire: 5 },
       disagree: { Cowboy: 1, Pirate: 3, Werewolf: 2, Vampire: 4 },
-      neutral: { Cowboy: 3, Pirate: 3, Werewolf: 3, Vampire: 3 },
+      neutral: { Cowboy: 3, Pirate: 0, Werewolf: 0, Vampire: 0 },
       agree: { Cowboy: 4, Pirate: 2, Werewolf: 2, Vampire: 1 },
       stronglyAgree: { Cowboy: 5, Pirate: 1, Werewolf: 1, Vampire: 0 },
     },
@@ -77,7 +77,7 @@ export const questions = [
     scores: {
       stronglyDisagree: { Cowboy: 0, Pirate: 2, Werewolf: 1, Vampire: 5 },
       disagree: { Cowboy: 1, Pirate: 3, Werewolf: 2, Vampire: 4 },
-      neutral: { Cowboy: 3, Pirate: 3, Werewolf: 3, Vampire: 3 },
+      neutral: { Cowboy: 3, Pirate: 0, Werewolf: 0, Vampire: 0 },
       agree: { Cowboy: 4, Pirate: 2, Werewolf: 2, Vampire: 1 },
       stronglyAgree: { Cowboy: 5, Pirate: 1, Werewolf: 1, Vampire: 0 },
     },
@@ -90,7 +90,7 @@ export const questions = [
     scores: {
       stronglyDisagree: { Cowboy: 2, Pirate: 0, Werewolf: 4, Vampire: 2 },
       disagree: { Cowboy: 3, Pirate: 1, Werewolf: 3, Vampire: 3 },
-      neutral: { Cowboy: 3, Pirate: 3, Werewolf: 3, Vampire: 3 },
+      neutral: { Cowboy: 0, Pirate: 3, Werewolf: 0, Vampire: 0 },
       agree: { Cowboy: 2, Pirate: 4, Werewolf: 2, Vampire: 2 },
       stronglyAgree: { Cowboy: 1, Pirate: 5, Werewolf: 1, Vampire: 1 },
     },
@@ -101,7 +101,7 @@ export const questions = [
     scores: {
       stronglyDisagree: { Cowboy: 2, Pirate: 0, Werewolf: 4, Vampire: 2 },
       disagree: { Cowboy: 3, Pirate: 1, Werewolf: 3, Vampire: 3 },
-      neutral: { Cowboy: 3, Pirate: 3, Werewolf: 3, Vampire: 3 },
+      neutral: { Cowboy: 0, Pirate: 3, Werewolf: 0, Vampire: 0 },
       agree: { Cowboy: 2, Pirate: 4, Werewolf: 2, Vampire: 2 },
       stronglyAgree: { Cowboy: 1, Pirate: 5, Werewolf: 1, Vampire: 1 },
     },
@@ -112,7 +112,7 @@ export const questions = [
     scores: {
       stronglyDisagree: { Cowboy: 2, Pirate: 0, Werewolf: 4, Vampire: 2 },
       disagree: { Cowboy: 3, Pirate: 1, Werewolf: 3, Vampire: 3 },
-      neutral: { Cowboy: 3, Pirate: 3, Werewolf: 3, Vampire: 3 },
+      neutral: { Cowboy: 0, Pirate: 3, Werewolf: 0, Vampire: 0 },
       agree: { Cowboy: 2, Pirate: 4, Werewolf: 2, Vampire: 2 },
       stronglyAgree: { Cowboy: 1, Pirate: 5, Werewolf: 1, Vampire: 1 },
     },
@@ -123,7 +123,7 @@ export const questions = [
     scores: {
       stronglyDisagree: { Cowboy: 2, Pirate: 0, Werewolf: 4, Vampire: 2 },
       disagree: { Cowboy: 3, Pirate: 1, Werewolf: 3, Vampire: 3 },
-      neutral: { Cowboy: 3, Pirate: 3, Werewolf: 3, Vampire: 3 },
+      neutral: { Cowboy: 0, Pirate: 3, Werewolf: 0, Vampire: 0 },
       agree: { Cowboy: 2, Pirate: 4, Werewolf: 2, Vampire: 2 },
       stronglyAgree: { Cowboy: 1, Pirate: 5, Werewolf: 1, Vampire: 1 },
     },
@@ -134,7 +134,7 @@ export const questions = [
     scores: {
       stronglyDisagree: { Cowboy: 2, Pirate: 0, Werewolf: 4, Vampire: 2 },
       disagree: { Cowboy: 3, Pirate: 1, Werewolf: 3, Vampire: 3 },
-      neutral: { Cowboy: 3, Pirate: 3, Werewolf: 3, Vampire: 3 },
+      neutral: { Cowboy: 0, Pirate: 3, Werewolf: 0, Vampire: 0 },
       agree: { Cowboy: 2, Pirate: 4, Werewolf: 2, Vampire: 2 },
       stronglyAgree: { Cowboy: 1, Pirate: 5, Werewolf: 1, Vampire: 1 },
     },
@@ -145,7 +145,7 @@ export const questions = [
     scores: {
       stronglyDisagree: { Cowboy: 2, Pirate: 0, Werewolf: 4, Vampire: 2 },
       disagree: { Cowboy: 3, Pirate: 1, Werewolf: 3, Vampire: 3 },
-      neutral: { Cowboy: 3, Pirate: 3, Werewolf: 3, Vampire: 3 },
+      neutral: { Cowboy: 0, Pirate: 3, Werewolf: 0, Vampire: 0 },
       agree: { Cowboy: 2, Pirate: 4, Werewolf: 2, Vampire: 2 },
       stronglyAgree: { Cowboy: 1, Pirate: 5, Werewolf: 1, Vampire: 1 },
     },
@@ -156,7 +156,7 @@ export const questions = [
     scores: {
       stronglyDisagree: { Cowboy: 2, Pirate: 0, Werewolf: 4, Vampire: 2 },
       disagree: { Cowboy: 3, Pirate: 1, Werewolf: 3, Vampire: 3 },
-      neutral: { Cowboy: 3, Pirate: 3, Werewolf: 3, Vampire: 3 },
+      neutral: { Cowboy: 0, Pirate: 3, Werewolf: 0, Vampire: 0 },
       agree: { Cowboy: 2, Pirate: 4, Werewolf: 2, Vampire: 2 },
       stronglyAgree: { Cowboy: 1, Pirate: 5, Werewolf: 1, Vampire: 1 },
     },
@@ -169,7 +169,7 @@ export const questions = [
     scores: {
       stronglyDisagree: { Cowboy: 2, Pirate: 1, Werewolf: 0, Vampire: 5 },
       disagree: { Cowboy: 3, Pirate: 2, Werewolf: 1, Vampire: 4 },
-      neutral: { Cowboy: 3, Pirate: 3, Werewolf: 3, Vampire: 3 },
+      neutral: { Cowboy: 0, Pirate: 0, Werewolf: 3, Vampire: 0 },
       agree: { Cowboy: 2, Pirate: 2, Werewolf: 4, Vampire: 2 },
       stronglyAgree: { Cowboy: 1, Pirate: 1, Werewolf: 5, Vampire: 0 },
     },
@@ -180,7 +180,7 @@ export const questions = [
     scores: {
       stronglyDisagree: { Cowboy: 2, Pirate: 1, Werewolf: 0, Vampire: 5 },
       disagree: { Cowboy: 3, Pirate: 2, Werewolf: 1, Vampire: 4 },
-      neutral: { Cowboy: 3, Pirate: 3, Werewolf: 3, Vampire: 3 },
+      neutral: { Cowboy: 0, Pirate: 0, Werewolf: 3, Vampire: 0 },
       agree: { Cowboy: 2, Pirate: 2, Werewolf: 4, Vampire: 2 },
       stronglyAgree: { Cowboy: 1, Pirate: 1, Werewolf: 5, Vampire: 0 },
     },
@@ -191,7 +191,7 @@ export const questions = [
     scores: {
       stronglyDisagree: { Cowboy: 2, Pirate: 1, Werewolf: 0, Vampire: 5 },
       disagree: { Cowboy: 3, Pirate: 2, Werewolf: 1, Vampire: 4 },
-      neutral: { Cowboy: 3, Pirate: 3, Werewolf: 3, Vampire: 3 },
+      neutral: { Cowboy: 0, Pirate: 0, Werewolf: 3, Vampire: 0 },
       agree: { Cowboy: 2, Pirate: 2, Werewolf: 4, Vampire: 2 },
       stronglyAgree: { Cowboy: 1, Pirate: 1, Werewolf: 5, Vampire: 0 },
     },
@@ -202,7 +202,7 @@ export const questions = [
     scores: {
       stronglyDisagree: { Cowboy: 2, Pirate: 1, Werewolf: 0, Vampire: 5 },
       disagree: { Cowboy: 3, Pirate: 2, Werewolf: 1, Vampire: 4 },
-      neutral: { Cowboy: 3, Pirate: 3, Werewolf: 3, Vampire: 3 },
+      neutral: { Cowboy: 0, Pirate: 0, Werewolf: 3, Vampire: 0 },
       agree: { Cowboy: 2, Pirate: 2, Werewolf: 4, Vampire: 2 },
       stronglyAgree: { Cowboy: 1, Pirate: 1, Werewolf: 5, Vampire: 0 },
     },
@@ -213,7 +213,7 @@ export const questions = [
     scores: {
       stronglyDisagree: { Cowboy: 2, Pirate: 1, Werewolf: 0, Vampire: 5 },
       disagree: { Cowboy: 3, Pirate: 2, Werewolf: 1, Vampire: 4 },
-      neutral: { Cowboy: 3, Pirate: 3, Werewolf: 3, Vampire: 3 },
+      neutral: { Cowboy: 0, Pirate: 0, Werewolf: 3, Vampire: 0 },
       agree: { Cowboy: 2, Pirate: 2, Werewolf: 4, Vampire: 2 },
       stronglyAgree: { Cowboy: 1, Pirate: 1, Werewolf: 5, Vampire: 0 },
     },
@@ -224,7 +224,7 @@ export const questions = [
     scores: {
       stronglyDisagree: { Cowboy: 2, Pirate: 1, Werewolf: 0, Vampire: 5 },
       disagree: { Cowboy: 3, Pirate: 2, Werewolf: 1, Vampire: 4 },
-      neutral: { Cowboy: 3, Pirate: 3, Werewolf: 3, Vampire: 3 },
+      neutral: { Cowboy: 0, Pirate: 0, Werewolf: 3, Vampire: 0 },
       agree: { Cowboy: 2, Pirate: 2, Werewolf: 4, Vampire: 2 },
       stronglyAgree: { Cowboy: 1, Pirate: 1, Werewolf: 5, Vampire: 0 },
     },
@@ -235,7 +235,7 @@ export const questions = [
     scores: {
       stronglyDisagree: { Cowboy: 2, Pirate: 1, Werewolf: 0, Vampire: 5 },
       disagree: { Cowboy: 3, Pirate: 2, Werewolf: 1, Vampire: 4 },
-      neutral: { Cowboy: 3, Pirate: 3, Werewolf: 3, Vampire: 3 },
+      neutral: { Cowboy: 0, Pirate: 0, Werewolf: 3, Vampire: 0 },
       agree: { Cowboy: 2, Pirate: 2, Werewolf: 4, Vampire: 2 },
       stronglyAgree: { Cowboy: 1, Pirate: 1, Werewolf: 5, Vampire: 0 },
     },
@@ -248,7 +248,7 @@ export const questions = [
     scores: {
       stronglyDisagree: { Cowboy: 5, Pirate: 2, Werewolf: 2, Vampire: 0 },
       disagree: { Cowboy: 4, Pirate: 3, Werewolf: 3, Vampire: 1 },
-      neutral: { Cowboy: 3, Pirate: 3, Werewolf: 3, Vampire: 3 },
+      neutral: { Cowboy: 0, Pirate: 0, Werewolf: 0, Vampire: 3 },
       agree: { Cowboy: 2, Pirate: 2, Werewolf: 2, Vampire: 4 },
       stronglyAgree: { Cowboy: 1, Pirate: 1, Werewolf: 1, Vampire: 5 },
     },
@@ -259,7 +259,7 @@ export const questions = [
     scores: {
       stronglyDisagree: { Cowboy: 5, Pirate: 2, Werewolf: 2, Vampire: 0 },
       disagree: { Cowboy: 4, Pirate: 3, Werewolf: 3, Vampire: 1 },
-      neutral: { Cowboy: 3, Pirate: 3, Werewolf: 3, Vampire: 3 },
+      neutral: { Cowboy: 0, Pirate: 0, Werewolf: 0, Vampire: 3 },
       agree: { Cowboy: 2, Pirate: 2, Werewolf: 2, Vampire: 4 },
       stronglyAgree: { Cowboy: 1, Pirate: 1, Werewolf: 1, Vampire: 5 },
     },
@@ -270,7 +270,7 @@ export const questions = [
     scores: {
       stronglyDisagree: { Cowboy: 5, Pirate: 2, Werewolf: 2, Vampire: 0 },
       disagree: { Cowboy: 4, Pirate: 3, Werewolf: 3, Vampire: 1 },
-      neutral: { Cowboy: 3, Pirate: 3, Werewolf: 3, Vampire: 3 },
+      neutral: { Cowboy: 0, Pirate: 0, Werewolf: 0, Vampire: 3 },
       agree: { Cowboy: 2, Pirate: 2, Werewolf: 2, Vampire: 4 },
       stronglyAgree: { Cowboy: 1, Pirate: 1, Werewolf: 1, Vampire: 5 },
     },
@@ -281,43 +281,40 @@ export const questions = [
     scores: {
       stronglyDisagree: { Cowboy: 5, Pirate: 2, Werewolf: 2, Vampire: 0 },
       disagree: { Cowboy: 4, Pirate: 3, Werewolf: 3, Vampire: 1 },
-      neutral: { Cowboy: 3, Pirate: 3, Werewolf: 3, Vampire: 3 },
+      neutral: { Cowboy: 0, Pirate: 0, Werewolf: 0, Vampire: 3 },
       agree: { Cowboy: 2, Pirate: 2, Werewolf: 2, Vampire: 4 },
       stronglyAgree: { Cowboy: 1, Pirate: 1, Werewolf: 1, Vampire: 5 },
     },
   },
-
   {
     id: "q26",
     text: "I often think a few steps ahead in social situations.",
     scores: {
       stronglyDisagree: { Cowboy: 5, Pirate: 2, Werewolf: 2, Vampire: 0 },
       disagree: { Cowboy: 4, Pirate: 3, Werewolf: 3, Vampire: 1 },
-      neutral: { Cowboy: 3, Pirate: 3, Werewolf: 3, Vampire: 3 },
+      neutral: { Cowboy: 0, Pirate: 0, Werewolf: 0, Vampire: 3 },
       agree: { Cowboy: 2, Pirate: 2, Werewolf: 2, Vampire: 4 },
       stronglyAgree: { Cowboy: 1, Pirate: 1, Werewolf: 1, Vampire: 5 },
     },
   },
-
   {
     id: "q27",
     text: "I'm skilled at influencing others without them realizing it.",
     scores: {
       stronglyDisagree: { Cowboy: 5, Pirate: 2, Werewolf: 2, Vampire: 0 },
       disagree: { Cowboy: 4, Pirate: 3, Werewolf: 3, Vampire: 1 },
-      neutral: { Cowboy: 3, Pirate: 3, Werewolf: 3, Vampire: 3 },
+      neutral: { Cowboy: 0, Pirate: 0, Werewolf: 0, Vampire: 3 },
       agree: { Cowboy: 2, Pirate: 2, Werewolf: 2, Vampire: 4 },
       stronglyAgree: { Cowboy: 1, Pirate: 1, Werewolf: 1, Vampire: 5 },
     },
   },
-
   {
     id: "q28",
     text: "I feel more comfortable when others see me as confident or composed.",
     scores: {
       stronglyDisagree: { Cowboy: 5, Pirate: 2, Werewolf: 2, Vampire: 0 },
       disagree: { Cowboy: 4, Pirate: 3, Werewolf: 3, Vampire: 1 },
-      neutral: { Cowboy: 3, Pirate: 3, Werewolf: 3, Vampire: 3 },
+      neutral: { Cowboy: 0, Pirate: 0, Werewolf: 0, Vampire: 3 },
       agree: { Cowboy: 2, Pirate: 2, Werewolf: 2, Vampire: 4 },
       stronglyAgree: { Cowboy: 1, Pirate: 1, Werewolf: 1, Vampire: 5 },
     },
@@ -333,6 +330,25 @@ export default function Questionnaire({
   sessionId,
   onComplete,
 }: QuestionnaireProps) {
+  // ...existing code...
+  // Add keydown handler for Enter
+  React.useEffect(() => {
+    const handleKeyDown = (e: KeyboardEvent) => {
+      if (e.key === "Enter") {
+        // Only allow if an answer is selected
+        const originalIndex = shuffledQuestions[currentQuestionIndex].originalIndex;
+        if (answers[originalIndex] !== 0) {
+          if (currentQuestionIndex < 27) {
+            setCurrentQuestionIndex((idx) => idx + 1);
+          } else {
+            handleSubmit();
+          }
+        }
+      }
+    };
+    window.addEventListener("keydown", handleKeyDown);
+    return () => window.removeEventListener("keydown", handleKeyDown);
+  }, [currentQuestionIndex, answers]);
   const [currentQuestionIndex, setCurrentQuestionIndex] = useState(0);
 
   // Shuffle questions once on component mount and store them in state
@@ -349,6 +365,25 @@ export default function Questionnaire({
 
   // Answers are stored in an array that maps to the *original* question order
   const [answers, setAnswers] = useState<number[]>(new Array(28).fill(0));
+
+  // Add keydown handler for Enter
+  React.useEffect(() => {
+    const handleKeyDown = (e: KeyboardEvent) => {
+      if (e.key === "Enter") {
+        // Only allow if an answer is selected
+        const originalIndex = shuffledQuestions[currentQuestionIndex].originalIndex;
+        if (answers[originalIndex] !== 0) {
+          if (currentQuestionIndex < 27) {
+            setCurrentQuestionIndex((idx) => idx + 1);
+          } else {
+            handleSubmit();
+          }
+        }
+      }
+    };
+    window.addEventListener("keydown", handleKeyDown);
+    return () => window.removeEventListener("keydown", handleKeyDown);
+  }, [currentQuestionIndex, answers, shuffledQuestions]);
   const saveTestResult = useMutation(api.tests.saveTestResult);
 
   const handleAnswer = (value: number) => {
