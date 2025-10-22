@@ -9,77 +9,77 @@ export const questions: Array<{ id: string; text: string; scores: any }> = [
     id: "q1",
     text: "I tend to see the best in people, even when others don't.",
     scores: {
-      stronglyDisagree: { Cowboy: 0, Pirate: 2, Werewolf: 1, Vampire: 5 },
-      disagree: { Cowboy: 1, Pirate: 3, Werewolf: 2, Vampire: 4 },
-      neutral: { Cowboy: 3, Pirate: 0, Werewolf: 0, Vampire: 0 },
-      agree: { Cowboy: 4, Pirate: 2, Werewolf: 2, Vampire: 1 },
-      stronglyAgree: { Cowboy: 5, Pirate: 1, Werewolf: 1, Vampire: 0 },
+      stronglyDisagree: { Cowboy: 0, Pirate: 0, Werewolf: 0, Vampire: 5 },
+      disagree: { Cowboy: 0, Pirate: 0, Werewolf: 3, Vampire: 3 },
+      neutral: { Cowboy: 3, Pirate: 0, Werewolf: 2, Vampire: 1 },
+      agree: { Cowboy: 4, Pirate: 0, Werewolf: 0, Vampire: 0 },
+      stronglyAgree: { Cowboy: 5, Pirate: 0, Werewolf: 0, Vampire: 0 },
     },
   },
   {
     id: "q2",
     text: "I'd rather keep the peace than win an argument.",
     scores: {
-      stronglyDisagree: { Cowboy: 0, Pirate: 2, Werewolf: 1, Vampire: 5 },
-      disagree: { Cowboy: 1, Pirate: 3, Werewolf: 2, Vampire: 4 },
-      neutral: { Cowboy: 3, Pirate: 0, Werewolf: 0, Vampire: 0 },
-      agree: { Cowboy: 4, Pirate: 2, Werewolf: 2, Vampire: 1 },
-      stronglyAgree: { Cowboy: 5, Pirate: 1, Werewolf: 1, Vampire: 0 },
+      stronglyDisagree: { Cowboy: 0, Pirate: 0, Werewolf: 0, Vampire: 5 },
+      disagree: { Cowboy: 1, Pirate: 0, Werewolf: 3, Vampire: 4 },
+      neutral: { Cowboy: 3, Pirate: 2, Werewolf: 3, Vampire: 3 },
+      agree: { Cowboy: 4, Pirate: 2, Werewolf: 1, Vampire: 1 },
+      stronglyAgree: { Cowboy: 5, Pirate: 0, Werewolf: 0, Vampire: 0 },
     },
   },
   {
     id: "q3",
     text: "I believe everything happens for a reason.",
     scores: {
-      stronglyDisagree: { Cowboy: 0, Pirate: 2, Werewolf: 2, Vampire: 5 },
-      disagree: { Cowboy: 1, Pirate: 3, Werewolf: 3, Vampire: 4 },
-      neutral: { Cowboy: 3, Pirate: 0, Werewolf: 0, Vampire: 0 },
-      agree: { Cowboy: 4, Pirate: 2, Werewolf: 2, Vampire: 1 },
-      stronglyAgree: { Cowboy: 5, Pirate: 1, Werewolf: 1, Vampire: 0 },
+      stronglyDisagree: { Cowboy: 0, Pirate: 0, Werewolf: 0, Vampire: 5 },
+      disagree: { Cowboy: 1, Pirate: 2, Werewolf: 3, Vampire: 4 },
+      neutral: { Cowboy: 3, Pirate: 2, Werewolf: 3, Vampire: 3 },
+      agree: { Cowboy: 4, Pirate: 2, Werewolf: 1, Vampire: 1 },
+      stronglyAgree: { Cowboy: 5, Pirate: 0, Werewolf: 0, Vampire: 0 },
     },
   },
   {
     id: "q4",
     text: "I'm easily moved by acts of kindness or sincerity.",
     scores: {
-      stronglyDisagree: { Cowboy: 0, Pirate: 2, Werewolf: 1, Vampire: 5 },
+      stronglyDisagree: { Cowboy: 0, Pirate: 0, Werewolf: 0, Vampire: 5 },
       disagree: { Cowboy: 1, Pirate: 3, Werewolf: 2, Vampire: 4 },
-      neutral: { Cowboy: 3, Pirate: 0, Werewolf: 0, Vampire: 0 },
-      agree: { Cowboy: 4, Pirate: 2, Werewolf: 2, Vampire: 1 },
-      stronglyAgree: { Cowboy: 5, Pirate: 1, Werewolf: 1, Vampire: 0 },
+      neutral: { Cowboy: 3, Pirate: 1, Werewolf: 2, Vampire: 3 },
+      agree: { Cowboy: 4, Pirate: 0, Werewolf: 3, Vampire: 1 },
+      stronglyAgree: { Cowboy: 5, Pirate: 0, Werewolf: 0, Vampire: 0 },
     },
   },
   {
     id: "q5",
     text: "I often find myself forgiving people, even when they don't apologize.",
     scores: {
-      stronglyDisagree: { Cowboy: 0, Pirate: 2, Werewolf: 1, Vampire: 5 },
-      disagree: { Cowboy: 1, Pirate: 3, Werewolf: 2, Vampire: 4 },
-      neutral: { Cowboy: 3, Pirate: 0, Werewolf: 0, Vampire: 0 },
-      agree: { Cowboy: 4, Pirate: 2, Werewolf: 2, Vampire: 1 },
-      stronglyAgree: { Cowboy: 5, Pirate: 1, Werewolf: 1, Vampire: 0 },
+      stronglyDisagree: { Cowboy: 0, Pirate: 0, Werewolf: 0, Vampire: 5 },
+      disagree: { Cowboy: 1, Pirate: 2, Werewolf: 2, Vampire: 4 },
+      neutral: { Cowboy: 3, Pirate: 1, Werewolf: 2, Vampire: 3 },
+      agree: { Cowboy: 4, Pirate: 1, Werewolf: 3, Vampire: 1 },
+      stronglyAgree: { Cowboy: 5, Pirate: 0, Werewolf: 0, Vampire: 0 },
     },
   },
   {
     id: "q6",
     text: "I prefer to follow someone I trust rather than take charge myself.",
     scores: {
-      stronglyDisagree: { Cowboy: 0, Pirate: 2, Werewolf: 1, Vampire: 5 },
-      disagree: { Cowboy: 1, Pirate: 3, Werewolf: 2, Vampire: 4 },
-      neutral: { Cowboy: 3, Pirate: 0, Werewolf: 0, Vampire: 0 },
-      agree: { Cowboy: 4, Pirate: 2, Werewolf: 2, Vampire: 1 },
-      stronglyAgree: { Cowboy: 5, Pirate: 1, Werewolf: 1, Vampire: 0 },
+      stronglyDisagree: { Cowboy: 0, Pirate: 0, Werewolf: 0, Vampire: 5 },
+      disagree: { Cowboy: 1, Pirate: 1, Werewolf: 3, Vampire: 4 },
+      neutral: { Cowboy: 3, Pirate: 2, Werewolf: 3, Vampire: 3 },
+      agree: { Cowboy: 4, Pirate: 3, Werewolf: 2, Vampire: 1 },
+      stronglyAgree: { Cowboy: 5, Pirate: 0, Werewolf: 0, Vampire: 0 },
     },
   },
   {
     id: "q7",
     text: "I try to stay hopeful, even when things go wrong.",
     scores: {
-      stronglyDisagree: { Cowboy: 0, Pirate: 2, Werewolf: 1, Vampire: 5 },
+      stronglyDisagree: { Cowboy: 0, Pirate: 0, Werewolf: 0, Vampire: 5 },
       disagree: { Cowboy: 1, Pirate: 3, Werewolf: 2, Vampire: 4 },
-      neutral: { Cowboy: 3, Pirate: 0, Werewolf: 0, Vampire: 0 },
-      agree: { Cowboy: 4, Pirate: 2, Werewolf: 2, Vampire: 1 },
-      stronglyAgree: { Cowboy: 5, Pirate: 1, Werewolf: 1, Vampire: 0 },
+      neutral: { Cowboy: 3, Pirate: 2, Werewolf: 2, Vampire: 2 },
+      agree: { Cowboy: 4, Pirate: 0, Werewolf: 3, Vampire: 1 },
+      stronglyAgree: { Cowboy: 5, Pirate: 0, Werewolf: 0, Vampire: 0 },
     },
   },
 
@@ -88,77 +88,77 @@ export const questions: Array<{ id: string; text: string; scores: any }> = [
     id: "q8",
     text: "I adapt quickly when plans change.",
     scores: {
-      stronglyDisagree: { Cowboy: 2, Pirate: 0, Werewolf: 4, Vampire: 2 },
-      disagree: { Cowboy: 3, Pirate: 1, Werewolf: 3, Vampire: 3 },
+      stronglyDisagree: { Cowboy: 0, Pirate: 0, Werewolf: 0, Vampire: 4 },
+      disagree: { Cowboy: 0, Pirate: 1, Werewolf: 0, Vampire: 3 },
       neutral: { Cowboy: 0, Pirate: 3, Werewolf: 0, Vampire: 0 },
-      agree: { Cowboy: 2, Pirate: 4, Werewolf: 2, Vampire: 2 },
-      stronglyAgree: { Cowboy: 1, Pirate: 5, Werewolf: 1, Vampire: 1 },
+      agree: { Cowboy: 0, Pirate: 4, Werewolf: 0, Vampire: 2 },
+      stronglyAgree: { Cowboy: 0, Pirate: 5, Werewolf: 0, Vampire: 0 },
     },
   },
   {
     id: "q9",
     text: "I rarely let stress get the best of me.",
     scores: {
-      stronglyDisagree: { Cowboy: 2, Pirate: 0, Werewolf: 4, Vampire: 2 },
-      disagree: { Cowboy: 3, Pirate: 1, Werewolf: 3, Vampire: 3 },
-      neutral: { Cowboy: 0, Pirate: 3, Werewolf: 0, Vampire: 0 },
-      agree: { Cowboy: 2, Pirate: 4, Werewolf: 2, Vampire: 2 },
-      stronglyAgree: { Cowboy: 1, Pirate: 5, Werewolf: 1, Vampire: 1 },
+      stronglyDisagree: { Cowboy: 0, Pirate: 0, Werewolf: 4, Vampire: 0 },
+      disagree: { Cowboy: 0, Pirate: 1, Werewolf: 3, Vampire: 0 },
+      neutral: { Cowboy: 0, Pirate: 3, Werewolf: 2, Vampire: 1 },
+      agree: { Cowboy: 0, Pirate: 4, Werewolf: 0, Vampire: 2 },
+      stronglyAgree: { Cowboy: 0, Pirate: 5, Werewolf: 0, Vampire: 3 },
     },
   },
   {
     id: "q10",
     text: "I'm good at finding humor, even in difficult situations.",
     scores: {
-      stronglyDisagree: { Cowboy: 2, Pirate: 0, Werewolf: 4, Vampire: 2 },
-      disagree: { Cowboy: 3, Pirate: 1, Werewolf: 3, Vampire: 3 },
-      neutral: { Cowboy: 0, Pirate: 3, Werewolf: 0, Vampire: 0 },
-      agree: { Cowboy: 2, Pirate: 4, Werewolf: 2, Vampire: 2 },
-      stronglyAgree: { Cowboy: 1, Pirate: 5, Werewolf: 1, Vampire: 1 },
+      stronglyDisagree: { Cowboy: 0, Pirate: 0, Werewolf: 4, Vampire: 3 },
+      disagree: { Cowboy: 0, Pirate: 1, Werewolf: 3, Vampire: 2 },
+      neutral: { Cowboy: 0, Pirate: 3, Werewolf: 1, Vampire: 2 },
+      agree: { Cowboy: 2, Pirate: 4, Werewolf: 0, Vampire: 1 },
+      stronglyAgree: { Cowboy: 1, Pirate: 5, Werewolf: 0, Vampire: 0 },
     },
   },
   {
     id: "q11",
     text: "I'd rather enjoy life than overthink it.",
     scores: {
-      stronglyDisagree: { Cowboy: 2, Pirate: 0, Werewolf: 4, Vampire: 2 },
-      disagree: { Cowboy: 3, Pirate: 1, Werewolf: 3, Vampire: 3 },
-      neutral: { Cowboy: 0, Pirate: 3, Werewolf: 0, Vampire: 0 },
-      agree: { Cowboy: 2, Pirate: 4, Werewolf: 2, Vampire: 2 },
-      stronglyAgree: { Cowboy: 1, Pirate: 5, Werewolf: 1, Vampire: 1 },
+      stronglyDisagree: { Cowboy: 0, Pirate: 0, Werewolf: 4, Vampire: 3 },
+      disagree: { Cowboy: 0, Pirate: 1, Werewolf: 3, Vampire: 2 },
+      neutral: { Cowboy: 1, Pirate: 3, Werewolf: 2, Vampire: 2 },
+      agree: { Cowboy: 2, Pirate: 4, Werewolf: 1, Vampire: 1 },
+      stronglyAgree: { Cowboy: 1, Pirate: 5, Werewolf: 0, Vampire: 0 },
     },
   },
   {
     id: "q12",
     text: "I don't hold grudges for long.",
     scores: {
-      stronglyDisagree: { Cowboy: 2, Pirate: 0, Werewolf: 4, Vampire: 2 },
-      disagree: { Cowboy: 3, Pirate: 1, Werewolf: 3, Vampire: 3 },
-      neutral: { Cowboy: 0, Pirate: 3, Werewolf: 0, Vampire: 0 },
-      agree: { Cowboy: 2, Pirate: 4, Werewolf: 2, Vampire: 2 },
-      stronglyAgree: { Cowboy: 1, Pirate: 5, Werewolf: 1, Vampire: 1 },
+      stronglyDisagree: { Cowboy: 0, Pirate: 0, Werewolf: 4, Vampire: 3 },
+      disagree: { Cowboy: 0, Pirate: 1, Werewolf: 3, Vampire: 2 },
+      neutral: { Cowboy: 0, Pirate: 3, Werewolf: 1, Vampire: 2 },
+      agree: { Cowboy: 2, Pirate: 4, Werewolf: 0, Vampire: 1 },
+      stronglyAgree: { Cowboy: 1, Pirate: 5, Werewolf: 0, Vampire: 0 },
     },
   },
   {
     id: "q13",
     text: "I'm comfortable going with the flow instead of planning everything.",
     scores: {
-      stronglyDisagree: { Cowboy: 2, Pirate: 0, Werewolf: 4, Vampire: 2 },
-      disagree: { Cowboy: 3, Pirate: 1, Werewolf: 3, Vampire: 3 },
-      neutral: { Cowboy: 0, Pirate: 3, Werewolf: 0, Vampire: 0 },
-      agree: { Cowboy: 2, Pirate: 4, Werewolf: 2, Vampire: 2 },
-      stronglyAgree: { Cowboy: 1, Pirate: 5, Werewolf: 1, Vampire: 1 },
+      stronglyDisagree: { Cowboy: 0, Pirate: 0, Werewolf: 0, Vampire: 5 },
+      disagree: { Cowboy: 0, Pirate: 1, Werewolf: 2, Vampire: 4 },
+      neutral: { Cowboy: 0, Pirate: 3, Werewolf: 1, Vampire: 3 },
+      agree: { Cowboy: 2, Pirate: 4, Werewolf: 0, Vampire: 1 },
+      stronglyAgree: { Cowboy: 1, Pirate: 5, Werewolf: 0, Vampire: 0 },
     },
   },
   {
     id: "q14",
     text: "I can stay calm and centered even when others around me are upset.",
     scores: {
-      stronglyDisagree: { Cowboy: 2, Pirate: 0, Werewolf: 4, Vampire: 2 },
-      disagree: { Cowboy: 3, Pirate: 1, Werewolf: 3, Vampire: 3 },
-      neutral: { Cowboy: 0, Pirate: 3, Werewolf: 0, Vampire: 0 },
-      agree: { Cowboy: 2, Pirate: 4, Werewolf: 2, Vampire: 2 },
-      stronglyAgree: { Cowboy: 1, Pirate: 5, Werewolf: 1, Vampire: 1 },
+      stronglyDisagree: { Cowboy: 0, Pirate: 0, Werewolf: 5, Vampire: 3 },
+      disagree: { Cowboy: 0, Pirate: 1, Werewolf: 4, Vampire: 2 },
+      neutral: { Cowboy: 0, Pirate: 3, Werewolf: 3, Vampire: 2 },
+      agree: { Cowboy: 2, Pirate: 4, Werewolf: 1, Vampire: 1 },
+      stronglyAgree: { Cowboy: 2, Pirate: 5, Werewolf: 0, Vampire: 0 },
     },
   },
 
@@ -167,77 +167,77 @@ export const questions: Array<{ id: string; text: string; scores: any }> = [
     id: "q15",
     text: "I feel emotions very intensely.",
     scores: {
-      stronglyDisagree: { Cowboy: 2, Pirate: 1, Werewolf: 0, Vampire: 5 },
-      disagree: { Cowboy: 3, Pirate: 2, Werewolf: 1, Vampire: 4 },
-      neutral: { Cowboy: 0, Pirate: 0, Werewolf: 3, Vampire: 0 },
-      agree: { Cowboy: 2, Pirate: 2, Werewolf: 4, Vampire: 2 },
-      stronglyAgree: { Cowboy: 1, Pirate: 1, Werewolf: 5, Vampire: 0 },
+      stronglyDisagree: { Cowboy: 0, Pirate: 5, Werewolf: 0, Vampire: 0 },
+      disagree: { Cowboy: 0, Pirate: 4, Werewolf: 1, Vampire: 4 },
+      neutral: { Cowboy: 0, Pirate: 3, Werewolf: 3, Vampire: 0 },
+      agree: { Cowboy: 0, Pirate: 1, Werewolf: 4, Vampire: 2 },
+      stronglyAgree: { Cowboy: 0, Pirate: 0, Werewolf: 5, Vampire: 0 },
     },
   },
   {
     id: "q16",
     text: "I can go from calm to passionate in a matter of seconds.",
     scores: {
-      stronglyDisagree: { Cowboy: 2, Pirate: 1, Werewolf: 0, Vampire: 5 },
-      disagree: { Cowboy: 3, Pirate: 2, Werewolf: 1, Vampire: 4 },
-      neutral: { Cowboy: 0, Pirate: 0, Werewolf: 3, Vampire: 0 },
-      agree: { Cowboy: 2, Pirate: 2, Werewolf: 4, Vampire: 2 },
-      stronglyAgree: { Cowboy: 1, Pirate: 1, Werewolf: 5, Vampire: 0 },
+      stronglyDisagree: { Cowboy: 0, Pirate: 5, Werewolf: 0, Vampire: 0 },
+      disagree: { Cowboy: 0, Pirate: 4, Werewolf: 1, Vampire: 4 },
+      neutral: { Cowboy: 0, Pirate: 3, Werewolf: 3, Vampire: 0 },
+      agree: { Cowboy: 0, Pirate: 1, Werewolf: 4, Vampire: 2 },
+      stronglyAgree: { Cowboy: 0, Pirate: 0, Werewolf: 5, Vampire: 0 },
     },
   },
   {
     id: "q17",
     text: "When I care about something, I throw myself into it completely.",
     scores: {
-      stronglyDisagree: { Cowboy: 2, Pirate: 1, Werewolf: 0, Vampire: 5 },
-      disagree: { Cowboy: 3, Pirate: 2, Werewolf: 1, Vampire: 4 },
-      neutral: { Cowboy: 0, Pirate: 0, Werewolf: 3, Vampire: 0 },
-      agree: { Cowboy: 2, Pirate: 2, Werewolf: 4, Vampire: 2 },
-      stronglyAgree: { Cowboy: 1, Pirate: 1, Werewolf: 5, Vampire: 0 },
+      stronglyDisagree: { Cowboy: 0, Pirate: 5, Werewolf: 0, Vampire: 0 },
+      disagree: { Cowboy: 0, Pirate: 4, Werewolf: 1, Vampire: 4 },
+      neutral: { Cowboy: 0, Pirate: 3, Werewolf: 3, Vampire: 0 },
+      agree: { Cowboy: 0, Pirate: 1, Werewolf: 4, Vampire: 2 },
+      stronglyAgree: { Cowboy: 0, Pirate: 0, Werewolf: 5, Vampire: 0 },
     },
   },
   {
     id: "q18",
     text: "My emotions often show on my face, even when I try to hide them.",
     scores: {
-      stronglyDisagree: { Cowboy: 2, Pirate: 1, Werewolf: 0, Vampire: 5 },
-      disagree: { Cowboy: 3, Pirate: 2, Werewolf: 1, Vampire: 4 },
-      neutral: { Cowboy: 0, Pirate: 0, Werewolf: 3, Vampire: 0 },
-      agree: { Cowboy: 2, Pirate: 2, Werewolf: 4, Vampire: 2 },
-      stronglyAgree: { Cowboy: 1, Pirate: 1, Werewolf: 5, Vampire: 0 },
+      stronglyDisagree: { Cowboy: 0, Pirate: 5, Werewolf: 0, Vampire: 0 },
+      disagree: { Cowboy: 0, Pirate: 4, Werewolf: 1, Vampire: 3 },
+      neutral: { Cowboy: 2, Pirate: 3, Werewolf: 3, Vampire: 1 },
+      agree: { Cowboy: 3, Pirate: 1, Werewolf: 4, Vampire: 2 },
+      stronglyAgree: { Cowboy: 0, Pirate: 0, Werewolf: 5, Vampire: 0 },
     },
   },
   {
     id: "q19",
     text: "I have strong gut reactions to people and situations.",
     scores: {
-      stronglyDisagree: { Cowboy: 2, Pirate: 1, Werewolf: 0, Vampire: 5 },
-      disagree: { Cowboy: 3, Pirate: 2, Werewolf: 1, Vampire: 4 },
-      neutral: { Cowboy: 0, Pirate: 0, Werewolf: 3, Vampire: 0 },
-      agree: { Cowboy: 2, Pirate: 2, Werewolf: 4, Vampire: 2 },
-      stronglyAgree: { Cowboy: 1, Pirate: 1, Werewolf: 5, Vampire: 0 },
+      stronglyDisagree: { Cowboy: 0, Pirate: 5, Werewolf: 0, Vampire: 0 },
+      disagree: { Cowboy: 0, Pirate: 4, Werewolf: 1, Vampire: 3 },
+      neutral: { Cowboy: 2, Pirate: 3, Werewolf: 3, Vampire: 1 },
+      agree: { Cowboy: 3, Pirate: 1, Werewolf: 4, Vampire: 2 },
+      stronglyAgree: { Cowboy: 0, Pirate: 0, Werewolf: 5, Vampire: 0 },
     },
   },
   {
     id: "q20",
     text: "I sometimes regret how strongly I react in the moment.",
     scores: {
-      stronglyDisagree: { Cowboy: 2, Pirate: 1, Werewolf: 0, Vampire: 5 },
-      disagree: { Cowboy: 3, Pirate: 2, Werewolf: 1, Vampire: 4 },
-      neutral: { Cowboy: 0, Pirate: 0, Werewolf: 3, Vampire: 0 },
-      agree: { Cowboy: 2, Pirate: 2, Werewolf: 4, Vampire: 2 },
-      stronglyAgree: { Cowboy: 1, Pirate: 1, Werewolf: 5, Vampire: 0 },
+      stronglyDisagree: { Cowboy: 0, Pirate: 5, Werewolf: 0, Vampire: 0 },
+      disagree: { Cowboy: 0, Pirate: 4, Werewolf: 1, Vampire: 3 },
+      neutral: { Cowboy: 1, Pirate: 3, Werewolf: 3, Vampire: 1 },
+      agree: { Cowboy: 2, Pirate: 0, Werewolf: 4, Vampire: 2 },
+      stronglyAgree: { Cowboy: 0, Pirate: 0, Werewolf: 5, Vampire: 0 },
     },
   },
   {
     id: "q21",
     text: "When I love someone or something, I'm fiercely protective.",
     scores: {
-      stronglyDisagree: { Cowboy: 2, Pirate: 1, Werewolf: 0, Vampire: 5 },
-      disagree: { Cowboy: 3, Pirate: 2, Werewolf: 1, Vampire: 4 },
-      neutral: { Cowboy: 0, Pirate: 0, Werewolf: 3, Vampire: 0 },
-      agree: { Cowboy: 2, Pirate: 2, Werewolf: 4, Vampire: 2 },
-      stronglyAgree: { Cowboy: 1, Pirate: 1, Werewolf: 5, Vampire: 0 },
+      stronglyDisagree: { Cowboy: 0, Pirate: 5, Werewolf: 0, Vampire: 0 },
+      disagree: { Cowboy: 0, Pirate: 4, Werewolf: 1, Vampire: 1 },
+      neutral: { Cowboy: 2, Pirate: 3, Werewolf: 3, Vampire: 1 },
+      agree: { Cowboy: 2, Pirate: 1, Werewolf: 4, Vampire: 3 },
+      stronglyAgree: { Cowboy: 0, Pirate: 0, Werewolf: 5, Vampire: 2 },
     },
   },
 
@@ -246,11 +246,11 @@ export const questions: Array<{ id: string; text: string; scores: any }> = [
     id: "q22",
     text: "I like to be in control of my surroundings.",
     scores: {
-      stronglyDisagree: { Cowboy: 5, Pirate: 2, Werewolf: 2, Vampire: 0 },
-      disagree: { Cowboy: 4, Pirate: 3, Werewolf: 3, Vampire: 1 },
-      neutral: { Cowboy: 0, Pirate: 0, Werewolf: 0, Vampire: 3 },
-      agree: { Cowboy: 2, Pirate: 2, Werewolf: 2, Vampire: 4 },
-      stronglyAgree: { Cowboy: 1, Pirate: 1, Werewolf: 1, Vampire: 5 },
+      stronglyDisagree: { Cowboy: 0, Pirate: 5, Werewolf: 2, Vampire: 0 },
+      disagree: { Cowboy: 3, Pirate: 4, Werewolf: 3, Vampire: 1 },
+      neutral: { Cowboy: 2, Pirate: 1, Werewolf: 2, Vampire: 3 },
+      agree: { Cowboy: 1, Pirate: 1, Werewolf: 2, Vampire: 4 },
+      stronglyAgree: { Cowboy: 0, Pirate: 0, Werewolf: 1, Vampire: 5 },
     },
   },
   {
@@ -268,55 +268,55 @@ export const questions: Array<{ id: string; text: string; scores: any }> = [
     id: "q24",
     text: "I rarely show my emotions unless I choose to.",
     scores: {
-      stronglyDisagree: { Cowboy: 5, Pirate: 2, Werewolf: 2, Vampire: 0 },
-      disagree: { Cowboy: 4, Pirate: 3, Werewolf: 3, Vampire: 1 },
-      neutral: { Cowboy: 0, Pirate: 0, Werewolf: 0, Vampire: 3 },
-      agree: { Cowboy: 2, Pirate: 2, Werewolf: 2, Vampire: 4 },
-      stronglyAgree: { Cowboy: 1, Pirate: 1, Werewolf: 1, Vampire: 5 },
+      stronglyDisagree: { Cowboy: 0, Pirate: 0, Werewolf: 5, Vampire: 0 },
+      disagree: { Cowboy: 3, Pirate: 1, Werewolf: 4, Vampire: 1 },
+      neutral: { Cowboy: 2, Pirate: 2, Werewolf: 3, Vampire: 3 },
+      agree: { Cowboy: 2, Pirate: 2, Werewolf: 1, Vampire: 4 },
+      stronglyAgree: { Cowboy: 0, Pirate: 0, Werewolf: 0, Vampire: 5 },
     },
   },
   {
     id: "q25",
     text: "I prefer to lead rather than follow.",
     scores: {
-      stronglyDisagree: { Cowboy: 5, Pirate: 2, Werewolf: 2, Vampire: 0 },
-      disagree: { Cowboy: 4, Pirate: 3, Werewolf: 3, Vampire: 1 },
-      neutral: { Cowboy: 0, Pirate: 0, Werewolf: 0, Vampire: 3 },
-      agree: { Cowboy: 2, Pirate: 2, Werewolf: 2, Vampire: 4 },
-      stronglyAgree: { Cowboy: 1, Pirate: 1, Werewolf: 1, Vampire: 5 },
+      stronglyDisagree: { Cowboy: 0, Pirate: 5, Werewolf: 0, Vampire: 0 },
+      disagree: { Cowboy: 3, Pirate: 4, Werewolf: 2, Vampire: 1 },
+      neutral: { Cowboy: 2, Pirate: 2, Werewolf: 3, Vampire: 3 },
+      agree: { Cowboy: 1, Pirate: 1, Werewolf: 3, Vampire: 4 },
+      stronglyAgree: { Cowboy: 0, Pirate: 0, Werewolf: 0, Vampire: 5 },
     },
   },
   {
     id: "q26",
     text: "I often think a few steps ahead in social situations.",
     scores: {
-      stronglyDisagree: { Cowboy: 5, Pirate: 2, Werewolf: 2, Vampire: 0 },
-      disagree: { Cowboy: 4, Pirate: 3, Werewolf: 3, Vampire: 1 },
-      neutral: { Cowboy: 0, Pirate: 0, Werewolf: 0, Vampire: 3 },
-      agree: { Cowboy: 2, Pirate: 2, Werewolf: 2, Vampire: 4 },
-      stronglyAgree: { Cowboy: 1, Pirate: 1, Werewolf: 1, Vampire: 5 },
+      stronglyDisagree: { Cowboy: 0, Pirate: 5, Werewolf: 0, Vampire: 0 },
+      disagree: { Cowboy: 3, Pirate: 4, Werewolf: 2, Vampire: 1 },
+      neutral: { Cowboy: 2, Pirate: 2, Werewolf: 3, Vampire: 3 },
+      agree: { Cowboy: 1, Pirate: 1, Werewolf: 3, Vampire: 4 },
+      stronglyAgree: { Cowboy: 0, Pirate: 0, Werewolf: 0, Vampire: 5 },
     },
   },
   {
     id: "q27",
     text: "I'm skilled at influencing others without them realizing it.",
     scores: {
-      stronglyDisagree: { Cowboy: 5, Pirate: 2, Werewolf: 2, Vampire: 0 },
-      disagree: { Cowboy: 4, Pirate: 3, Werewolf: 3, Vampire: 1 },
-      neutral: { Cowboy: 0, Pirate: 0, Werewolf: 0, Vampire: 3 },
-      agree: { Cowboy: 2, Pirate: 2, Werewolf: 2, Vampire: 4 },
-      stronglyAgree: { Cowboy: 1, Pirate: 1, Werewolf: 1, Vampire: 5 },
+      stronglyDisagree: { Cowboy: 5, Pirate: 0, Werewolf: 0, Vampire: 0 },
+      disagree: { Cowboy: 4, Pirate: 3, Werewolf: 2, Vampire: 1 },
+      neutral: { Cowboy: 2, Pirate: 2, Werewolf: 2, Vampire: 3 },
+      agree: { Cowboy: 0, Pirate: 1, Werewolf: 3, Vampire: 4 },
+      stronglyAgree: { Cowboy: 0, Pirate: 0, Werewolf: 0, Vampire: 5 },
     },
   },
   {
     id: "q28",
     text: "I feel more comfortable when others see me as confident or composed.",
     scores: {
-      stronglyDisagree: { Cowboy: 5, Pirate: 2, Werewolf: 2, Vampire: 0 },
-      disagree: { Cowboy: 4, Pirate: 3, Werewolf: 3, Vampire: 1 },
-      neutral: { Cowboy: 0, Pirate: 0, Werewolf: 0, Vampire: 3 },
-      agree: { Cowboy: 2, Pirate: 2, Werewolf: 2, Vampire: 4 },
-      stronglyAgree: { Cowboy: 1, Pirate: 1, Werewolf: 1, Vampire: 5 },
+      stronglyDisagree: { Cowboy: 0, Pirate: 0, Werewolf: 0, Vampire: 0 },
+      disagree: { Cowboy: 0, Pirate: 0, Werewolf: 4, Vampire: 1 },
+      neutral: { Cowboy: 2, Pirate: 2, Werewolf: 2, Vampire: 3 },
+      agree: { Cowboy: 0, Pirate: 2, Werewolf: 3, Vampire: 4 },
+      stronglyAgree: { Cowboy: 0, Pirate: 0, Werewolf: 0, Vampire: 5 },
     },
   },
 ];
@@ -330,25 +330,6 @@ export default function Questionnaire({
   sessionId,
   onComplete,
 }: QuestionnaireProps) {
-  // ...existing code...
-  // Add keydown handler for Enter
-  React.useEffect(() => {
-    const handleKeyDown = (e: KeyboardEvent) => {
-      if (e.key === "Enter") {
-        // Only allow if an answer is selected
-        const originalIndex = shuffledQuestions[currentQuestionIndex].originalIndex;
-        if (answers[originalIndex] !== 0) {
-          if (currentQuestionIndex < 27) {
-            setCurrentQuestionIndex((idx) => idx + 1);
-          } else {
-            handleSubmit();
-          }
-        }
-      }
-    };
-    window.addEventListener("keydown", handleKeyDown);
-    return () => window.removeEventListener("keydown", handleKeyDown);
-  }, [currentQuestionIndex, answers]);
   const [currentQuestionIndex, setCurrentQuestionIndex] = useState(0);
 
   // Shuffle questions once on component mount and store them in state
@@ -370,20 +351,13 @@ export default function Questionnaire({
   React.useEffect(() => {
     const handleKeyDown = (e: KeyboardEvent) => {
       if (e.key === "Enter") {
-        // Only allow if an answer is selected
-        const originalIndex = shuffledQuestions[currentQuestionIndex].originalIndex;
-        if (answers[originalIndex] !== 0) {
-          if (currentQuestionIndex < 27) {
-            setCurrentQuestionIndex((idx) => idx + 1);
-          } else {
-            handleSubmit();
-          }
-        }
+        handleNext();
       }
     };
     window.addEventListener("keydown", handleKeyDown);
     return () => window.removeEventListener("keydown", handleKeyDown);
   }, [currentQuestionIndex, answers, shuffledQuestions]);
+
   const saveTestResult = useMutation(api.tests.saveTestResult);
 
   const handleAnswer = (value: number) => {
@@ -402,6 +376,14 @@ export default function Questionnaire({
 
     if (currentQuestionIndex < 27) {
       setCurrentQuestionIndex(currentQuestionIndex + 1);
+      // Clear answer for next question so it does not autofill
+      const nextOriginalIndex =
+        shuffledQuestions[currentQuestionIndex + 1].originalIndex;
+      setAnswers((prev) => {
+        const updated = [...prev];
+        updated[nextOriginalIndex] = 0;
+        return updated;
+      });
     } else {
       handleSubmit();
     }
