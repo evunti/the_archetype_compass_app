@@ -139,7 +139,6 @@ export default function Results({
 
   const { scores, dominantType, answers } = result as any;
 
-  // Normalize dominantType order for combos so 'pirate+cowboy' matches 'cowboy+pirate'
   function normalizeTypeKey(type: string): string {
     if (type === "all four") return "all four";
     const parts = type.split("+");
@@ -149,9 +148,6 @@ export default function Results({
 
   const normalizedType = normalizeTypeKey(dominantType);
 
-  // Lookup personality blurb more robustly: personalityBlurbs keys are not
-  // guaranteed to match a sorted normalized order, so try a direct lookup
-  // first, then fall back to scanning keys and normalizing them for a match.
   function lookupPersonality(type: string | undefined) {
     if (!type) {
       return null;
@@ -188,12 +184,6 @@ export default function Results({
     }
   };
 
-  // Calculate percentages
-  // Calculate percentages.
-  // Historically this used a hardcoded 35 (7 questions * 5 points).
-  // To keep this accurate if questions or scoring change, derive the
-  // per-archetype maximum from the `questions` mapping instead of
-  // hardcoding a value.
   const _scoreLabels = [
     "stronglyDisagree",
     "disagree",
