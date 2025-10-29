@@ -6,7 +6,6 @@ interface ScoreBreakdownProps {
 
 export default function ScoreBreakdown({
   scores,
-  percentages, // optional - we'll compute normalized percentages from scores instead
   archetypeEmojis,
 }: ScoreBreakdownProps) {
   const colorClasses: Record<string, string> = {
