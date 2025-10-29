@@ -29,6 +29,9 @@ export default function App() {
       }
       setSessionId(newSessionId);
     }
+    // Clear any overrideResult (viewing a historical result) so the test
+    // workflow starts fresh and subsequent results fetch the new submission.
+    setOverrideResult(null);
     setCurrentPage("test");
   };
 
@@ -43,6 +46,9 @@ export default function App() {
   }, []);
 
   const handleTestComplete = () => {
+    // Ensure we don't accidentally keep an old overrideResult when showing
+    // the newly-submitted result.
+    setOverrideResult(null);
     setCurrentPage("results");
   };
 
