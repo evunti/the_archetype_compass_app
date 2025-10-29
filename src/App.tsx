@@ -132,16 +132,18 @@ function Content({
     return (
       <SavedResults
         onView={(result: any) => {
-          // If the result has a sessionId and looks server-side, navigate and let Results fetch it.
+          // Always open the exact saved item by passing it as an overrideResult.
+          // Previously we switched to using the sessionId which caused the
+          // Results view to fetch the most recent record for that session.
+          // Passing the full result object ensures the UI shows the specific
+          // historical submission the user selected.
+          setOverrideResult(result);
+          // Also set sessionId when available so downstream flows that rely
+          // on it (e.g., sharing/retake) behave consistently.
           if (result && result.sessionId) {
-            setOverrideResult(null);
             setSessionId(result.sessionId);
-            setCurrentPage("results");
-          } else {
-            // For local fallback (no sessionId), pass overrideResult directly
-            setOverrideResult(result);
-            setCurrentPage("results");
           }
+          setCurrentPage("results");
         }}
       />
     );
