@@ -38,7 +38,6 @@ export default function ScoreBreakdown({
       <div className="space-y-6">
         {Object.entries(scores).map(([type]) => (
           <div key={type} className="flex items-center space-x-4">
-            {/* Emoji + Label */}
             <div className="flex items-center space-x-3 w-32">
               <div className="text-xl">
                 {archetypeEmojis[type as keyof typeof archetypeEmojis]}
@@ -48,7 +47,6 @@ export default function ScoreBreakdown({
               </div>
             </div>
 
-            {/* Static filled bar */}
             <div className="flex-1 bg-gray-200 rounded-full h-10 relative overflow-hidden">
               <div
                 className={`h-full rounded-full ${colorClasses[type]}`}
@@ -57,7 +55,6 @@ export default function ScoreBreakdown({
                 }}
               ></div>
 
-              {/* Centered % label */}
               <div className="absolute inset-0 flex items-center justify-center text-sm font-semibold text-white drop-shadow">
                 {normalized[type] ?? 0}%
               </div>
