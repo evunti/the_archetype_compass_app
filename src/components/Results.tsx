@@ -189,11 +189,56 @@ export default function Results({
   };
 
   // Calculate percentages
+  // Calculate percentages.
+  // Historically this used a hardcoded 35 (7 questions * 5 points).
+  // To keep this accurate if questions or scoring change, derive the
+  // per-archetype maximum from the `questions` mapping instead of
+  // hardcoding a value.
+  const _scoreLabels = [
+    "stronglyDisagree",
+    "disagree",
+    "neutral",
+    "agree",
+    "stronglyAgree",
+  ] as const;
+
+  function computeMaxPerArchetype(qs: any[]) {
+    const maxBy: Record<string, number> = {
+      cowboy: 0,
+      pirate: 0,
+      werewolf: 0,
+      vampire: 0,
+    };
+
+    const canonicalNames: Record<string, string> = {
+      cowboy: "Cowboy",
+      pirate: "Pirate",
+      werewolf: "Werewolf",
+      vampire: "Vampire",
+    };
+
+    for (const q of qs) {
+      for (const archetypeKey of Object.keys(maxBy)) {
+        const canon = canonicalNames[archetypeKey];
+        let best = 0;
+        for (const label of _scoreLabels) {
+          const val = q?.scores?.[label]?.[canon] ?? 0;
+          if (typeof val === "number" && val > best) best = val;
+        }
+        maxBy[archetypeKey] += best;
+      }
+    }
+
+    return maxBy;
+  }
+
+  const maxima = computeMaxPerArchetype(questions);
+
   const percentages = {
-    cowboy: Math.round((scores.cowboy / 35) * 100),
-    pirate: Math.round((scores.pirate / 35) * 100),
-    werewolf: Math.round((scores.werewolf / 35) * 100),
-    vampire: Math.round((scores.vampire / 35) * 100),
+    cowboy: Math.round((scores.cowboy / (maxima.cowboy || 1)) * 100),
+    pirate: Math.round((scores.pirate / (maxima.pirate || 1)) * 100),
+    werewolf: Math.round((scores.werewolf / (maxima.werewolf || 1)) * 100),
+    vampire: Math.round((scores.vampire / (maxima.vampire || 1)) * 100),
   };
 
   // Quadrant chart positioning (X = Emotion, Y = Control)

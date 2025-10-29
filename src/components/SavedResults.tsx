@@ -16,14 +16,11 @@ export default function SavedResults({ onView }: SavedResultsProps) {
       : "skip"
   );
 
-  // read local fallback history
   let localHistory: any[] = [];
   try {
     const raw = localStorage.getItem("resultsHistory");
     if (raw) localHistory = JSON.parse(raw);
-  } catch (e) {
-    // ignore
-  }
+  } catch (e) {}
 
   const items: any[] = [];
   if (Array.isArray(userResults) && userResults.length) {
