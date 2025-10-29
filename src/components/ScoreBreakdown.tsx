@@ -1,12 +1,12 @@
 interface ScoreBreakdownProps {
   scores: Record<string, number>;
-  percentages: Record<string, number>;
+  percentages?: Record<string, number>;
   archetypeEmojis: Record<string, string>;
 }
 
 export default function ScoreBreakdown({
   scores,
-  percentages,
+  percentages, // optional - we'll compute normalized percentages from scores instead
   archetypeEmojis,
 }: ScoreBreakdownProps) {
   const colorClasses: Record<string, string> = {
@@ -15,6 +15,19 @@ export default function ScoreBreakdown({
     vampire: "bg-purple-500",
     werewolf: "bg-orange-500",
   };
+
+  // Compute normalized percentages from the raw scores so they always reflect
+  // the composition out of 100% (handles zero-total case).
+  const totalPoints = Object.values(scores || {}).reduce(
+    (acc, v) => acc + (v || 0),
+    0
+  );
+
+  const normalized: Record<string, number> = {};
+  for (const [k, v] of Object.entries(scores || {})) {
+    normalized[k] =
+      totalPoints > 0 ? Math.round(((v || 0) / totalPoints) * 100) : 0;
+  }
 
   return (
     <div className="bg-white rounded-lg shadow-lg p-6">
@@ -40,13 +53,13 @@ export default function ScoreBreakdown({
               <div
                 className={`h-full rounded-full ${colorClasses[type]}`}
                 style={{
-                  width: `${percentages[type as keyof typeof percentages]}%`,
+                  width: `${normalized[type] ?? 0}%`,
                 }}
               ></div>
 
               {/* Centered % label */}
               <div className="absolute inset-0 flex items-center justify-center text-sm font-semibold text-white drop-shadow">
-                {percentages[type as keyof typeof percentages]}%
+                {normalized[type] ?? 0}%
               </div>
             </div>
           </div>

@@ -100,11 +100,34 @@ const personalityBlurbs = {
 interface ResultsProps {
   sessionId: string;
   onRetakeTest: () => void;
+  overrideResult?: any;
 }
 
-export default function Results({ sessionId, onRetakeTest }: ResultsProps) {
+export default function Results({
+  sessionId,
+  onRetakeTest,
+  overrideResult,
+}: ResultsProps) {
   const [showAnswers, setShowAnswers] = useState(false);
-  const result = useQuery(api.tests.getTestResult, { sessionId });
+  const sessionResult = useQuery(
+    api.tests.getTestResult,
+    overrideResult ? "skip" : { sessionId }
+  );
+
+  const loggedInUser = useQuery(api.auth.loggedInUser);
+  const userResults = useQuery(
+    api.tests.getAllTestResults,
+    overrideResult
+      ? "skip"
+      : loggedInUser && !loggedInUser.isAnonymous
+        ? { userId: loggedInUser._id?.toString?.() }
+        : "skip"
+  );
+
+  let result = overrideResult || sessionResult || null;
+  if (!result && Array.isArray(userResults) && userResults.length > 0) {
+    result = userResults[0];
+  }
 
   if (!result) {
     return (
@@ -114,7 +137,7 @@ export default function Results({ sessionId, onRetakeTest }: ResultsProps) {
     );
   }
 
-  const { scores, dominantType, answers } = result;
+  const { scores, dominantType, answers } = result as any;
 
   // Normalize dominantType order for combos so 'pirate+cowboy' matches 'cowboy+pirate'
   function normalizeTypeKey(type: string): string {
@@ -125,9 +148,27 @@ export default function Results({ sessionId, onRetakeTest }: ResultsProps) {
   }
 
   const normalizedType = normalizeTypeKey(dominantType);
-  const personality = personalityBlurbs[
-    normalizedType as keyof typeof personalityBlurbs
-  ] || {
+
+  // Lookup personality blurb more robustly: personalityBlurbs keys are not
+  // guaranteed to match a sorted normalized order, so try a direct lookup
+  // first, then fall back to scanning keys and normalizing them for a match.
+  function lookupPersonality(type: string | undefined) {
+    if (!type) {
+      return null;
+    }
+    const nk = normalizeTypeKey(type);
+    if (personalityBlurbs[nk as keyof typeof personalityBlurbs]) {
+      return personalityBlurbs[nk as keyof typeof personalityBlurbs];
+    }
+    for (const k of Object.keys(personalityBlurbs)) {
+      if (normalizeTypeKey(k) === nk) {
+        return personalityBlurbs[k as keyof typeof personalityBlurbs];
+      }
+    }
+    return null;
+  }
+
+  const personality = lookupPersonality(dominantType) || {
     title: "Unknown Result",
     description:
       "Your result is unique! (Or there was a technical issue.) Please retake the test or contact support if this keeps happening.",
@@ -184,7 +225,8 @@ export default function Results({ sessionId, onRetakeTest }: ResultsProps) {
                   : dominantType
                       .split("+")
                       .map(
-                        (type) => type.charAt(0).toUpperCase() + type.slice(1)
+                        (type: string) =>
+                          type.charAt(0).toUpperCase() + type.slice(1)
                       )
                       .join(" + ")}
               </span>

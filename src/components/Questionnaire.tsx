@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import { useMutation } from "convex/react";
+import { useMutation, useQuery } from "convex/react";
 import { api } from "../../convex/_generated/api";
 import { toast } from "sonner";
 
@@ -359,6 +359,7 @@ export default function Questionnaire({
   }, [currentQuestionIndex, answers, shuffledQuestions]);
 
   const saveTestResult = useMutation(api.tests.saveTestResult);
+  const loggedInUser = useQuery(api.auth.loggedInUser);
 
   const handleAnswer = (value: number) => {
     const originalIndex = shuffledQuestions[currentQuestionIndex].originalIndex;
@@ -429,9 +430,68 @@ export default function Questionnaire({
 
     console.log("Final totals:", totals);
 
+    // Build the canonical scores object and dominantType the same way the
+    // server migration expects. We send these to the server so the server
+    // stores the canonical values instead of relying on a naive slice-based
+    // fallback.
+    const scoresPayload = {
+      cowboy: totals.Cowboy,
+      pirate: totals.Pirate,
+      werewolf: totals.Werewolf,
+      vampire: totals.Vampire,
+    };
+
+    const maxScore = Math.max(
+      scoresPayload.cowboy,
+      scoresPayload.pirate,
+      scoresPayload.werewolf,
+      scoresPayload.vampire
+    );
+    const topTypes = Object.entries(scoresPayload)
+      .filter(([_, score]) => score >= maxScore - 3)
+      .map(([type]) => type)
+      .sort();
+
+    let dominantType: string;
+    if (topTypes.length === 4) {
+      dominantType = "all four";
+    } else if (topTypes.length > 1) {
+      dominantType = topTypes.join("+");
+    } else {
+      dominantType = topTypes[0];
+    }
+
     try {
-      // Save both raw answers + computed totals to Convex
-      await saveTestResult({ sessionId, answers });
+      // Save raw answers + computed canonical scores & dominantType to Convex
+      await saveTestResult({
+        sessionId,
+        answers,
+        scores: scoresPayload,
+        dominantType,
+      });
+
+      // For anonymous users, persist a local fallback so results survive reloads
+      // on the same device (sessionId may be ephemeral across full reloads).
+      if (!loggedInUser || loggedInUser.isAnonymous) {
+        const fallback = {
+          scores: scoresPayload,
+          dominantType,
+          answers,
+          sessionId,
+          completedAt: Date.now(),
+        };
+        try {
+          const raw = localStorage.getItem("resultsHistory");
+          const arr = raw ? JSON.parse(raw) : [];
+          arr.unshift(fallback);
+          // keep last 20 entries
+          const trimmed = arr.slice(0, 20);
+          localStorage.setItem("resultsHistory", JSON.stringify(trimmed));
+        } catch (e) {
+          console.warn("Failed to write local fallback result", e);
+        }
+      }
+
       toast.success("Results saved!");
       onComplete();
     } catch (error) {

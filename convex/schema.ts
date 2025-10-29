@@ -15,6 +15,9 @@ const applicationTables = {
     }),
     dominantType: v.string(),
     completedAt: v.number(),
+    // Optional expiry timestamp (ms since epoch). If set, results older than this
+    // should be considered expired and omitted from queries.
+    expiresAt: v.optional(v.number()),
   }).index("by_session", ["sessionId"]),
 };
 
