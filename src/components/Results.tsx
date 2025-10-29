@@ -208,13 +208,11 @@ export default function Results({
 
   return (
     <div className="max-w-4xl mx-auto space-y-8">
-      {/* Header */}
       <div className="text-center">
         <h2 className="text-4xl font-bold text-gray-800 mb-2">Your Results</h2>
         <p className="text-gray-600">Discover your unique archetype blend</p>
       </div>
 
-      {/* Main Result */}
       <div className="bg-white rounded-lg shadow-lg p-8 text-center">
         <div className="text-6xl mb-4 flex flex-col items-center gap-1">
           {dominantType.includes("+") || dominantType === "all four" ? (
@@ -251,7 +249,6 @@ export default function Results({
         </p>
       </div>
 
-      {/* View Answers Button */}
       <div className="flex justify-center mb-4">
         <button
           className="px-4 py-2 bg-gray-200 rounded hover:bg-gray-300 text-gray-800 font-semibold"
@@ -261,7 +258,6 @@ export default function Results({
         </button>
       </div>
 
-      {/* Answers Modal/Section */}
       {showAnswers && answers && (
         <div className="bg-white rounded-lg shadow-lg p-6 mb-6">
           <h4 className="text-xl font-bold mb-4 text-center">
@@ -308,7 +304,6 @@ export default function Results({
         archetypeEmojis={archetypeEmojis}
       />
 
-      {/* Quadrant Chart */}
       <div className="bg-white rounded-lg shadow-lg p-6">
         <h4 className="text-xl font-semibold text-gray-800 mb-4 text-center">
           Personality Quadrant
@@ -320,7 +315,6 @@ export default function Results({
               "linear-gradient(135deg, #e0f2fe 0%, #f3e8ff 25%, #fff7ed 50%, #ecfdf5 75%, #e0f2fe 100%)",
           }}
         >
-          {/* Quadrant Background Colors */}
           <div className="absolute inset-0">
             {/* Top Left - Cowboy + Vampire (High Control, Low Emotion) */}
             <div className="absolute top-0 left-0 w-1/2 h-1/2 bg-gradient-to-br from-purple-100 to-sky-100 opacity-60"></div>
@@ -332,7 +326,6 @@ export default function Results({
             <div className="absolute bottom-0 right-0 w-1/2 h-1/2 bg-gradient-to-tl from-orange-100 to-emerald-100 opacity-60"></div>
           </div>
 
-          {/* Axes */}
           <div className="absolute inset-0 flex items-center justify-center">
             <div className="w-full h-0.5 bg-gray-400 shadow-sm"></div>
           </div>
@@ -350,7 +343,6 @@ export default function Results({
             ☠️🐺
           </div>
 
-          {/* Labels */}
           <div className="absolute top-2 left-1/2 transform -translate-x-1/2 text-sm font-medium text-gray-700 bg-white/80 px-2 py-1 rounded">
             High Control
           </div>
@@ -364,7 +356,6 @@ export default function Results({
             High Emotion
           </div>
 
-          {/* User Point */}
           <div
             className="absolute w-6 h-6 bg-gradient-to-br from-purple-500 to-purple-700 rounded-full transform -translate-x-1/2 -translate-y-1/2 border-3 border-white shadow-lg animate-pulse"
             style={{
@@ -380,7 +371,6 @@ export default function Results({
         </p>
       </div>
 
-      {/* Action Buttons */}
       <div className="flex flex-col sm:flex-row gap-4 justify-center">
         <button
           onClick={handleShare}
