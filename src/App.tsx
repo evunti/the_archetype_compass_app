@@ -3,22 +3,44 @@ import { api } from "../convex/_generated/api";
 import { SignInForm } from "./SignInForm";
 import { SignOutButton } from "./SignOutButton";
 import { Toaster } from "sonner";
-import { useState } from "react";
+import React, { useState, useEffect } from "react";
 import LandingPage from "./components/LandingPage";
 import Questionnaire from "./components/Questionnaire";
 import Results from "./components/Results";
+import SavedResults from "./components/SavedResults";
 
-type Page = "landing" | "test" | "results";
+type Page = "landing" | "test" | "results" | "history";
 
 export default function App() {
   const [currentPage, setCurrentPage] = useState<Page>("landing");
   const [sessionId, setSessionId] = useState<string>("");
+  const [overrideResult, setOverrideResult] = useState<any>(null);
 
   const handleStartTest = () => {
-    const newSessionId = Math.random().toString(36).substring(2, 15);
-    setSessionId(newSessionId);
+    // Reuse an existing sessionId if present (persisted for anonymous users),
+    // otherwise generate and persist a new one so anonymous results survive reloads.
+    let newSessionId = sessionId;
+    if (!newSessionId) {
+      newSessionId = Math.random().toString(36).substring(2, 15);
+      try {
+        localStorage.setItem("sessionId", newSessionId);
+      } catch (e) {
+        console.warn("Failed to persist sessionId", e);
+      }
+      setSessionId(newSessionId);
+    }
     setCurrentPage("test");
   };
+
+  // On mount, restore a persisted sessionId if present (client-only)
+  React.useEffect(() => {
+    try {
+      const stored = localStorage.getItem("sessionId");
+      if (stored) setSessionId(stored);
+    } catch (e) {
+      // ignore
+    }
+  }, []);
 
   const handleTestComplete = () => {
     setCurrentPage("results");
@@ -37,7 +59,15 @@ export default function App() {
         >
           The Archetype Compass
         </button>
-        <SignOutButton />
+        <div className="flex items-center gap-4">
+          <button
+            onClick={() => setCurrentPage("history")}
+            className="text-sm text-gray-600 hover:text-gray-800"
+          >
+            Saved
+          </button>
+          <SignOutButton />
+        </div>
       </header>
       <main className="flex-1 flex items-center justify-center p-4">
         <div className="w-full max-w-4xl mx-auto">
@@ -47,6 +77,10 @@ export default function App() {
             onStartTest={handleStartTest}
             onTestComplete={handleTestComplete}
             onRetakeTest={handleRetakeTest}
+            setSessionId={setSessionId}
+            setCurrentPage={setCurrentPage}
+            setOverrideResult={setOverrideResult}
+            overrideResult={overrideResult}
           />
         </div>
       </main>
@@ -61,12 +95,20 @@ function Content({
   onStartTest,
   onTestComplete,
   onRetakeTest,
+  setSessionId,
+  setCurrentPage,
+  setOverrideResult,
+  overrideResult,
 }: {
   currentPage: Page;
   sessionId: string;
   onStartTest: () => void;
   onTestComplete: () => void;
   onRetakeTest: () => void;
+  setSessionId: (s: string) => void;
+  setCurrentPage: (p: Page) => void;
+  setOverrideResult: (r: any) => void;
+  overrideResult: any;
 }) {
   const loggedInUser = useQuery(api.auth.loggedInUser);
 
@@ -86,8 +128,33 @@ function Content({
     return <Questionnaire sessionId={sessionId} onComplete={onTestComplete} />;
   }
 
+  if (currentPage === "history") {
+    return (
+      <SavedResults
+        onView={(result: any) => {
+          // If the result has a sessionId and looks server-side, navigate and let Results fetch it.
+          if (result && result.sessionId) {
+            setOverrideResult(null);
+            setSessionId(result.sessionId);
+            setCurrentPage("results");
+          } else {
+            // For local fallback (no sessionId), pass overrideResult directly
+            setOverrideResult(result);
+            setCurrentPage("results");
+          }
+        }}
+      />
+    );
+  }
+
   if (currentPage === "results") {
-    return <Results sessionId={sessionId} onRetakeTest={onRetakeTest} />;
+    return (
+      <Results
+        sessionId={sessionId}
+        onRetakeTest={onRetakeTest}
+        overrideResult={overrideResult}
+      />
+    );
   }
 
   return null;
