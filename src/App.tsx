@@ -1,7 +1,6 @@
 import { Authenticated, Unauthenticated, useQuery } from "convex/react";
 import { api } from "../convex/_generated/api";
 import { SignInForm } from "./SignInForm";
-import { SignOutButton } from "./SignOutButton";
 import { Toaster } from "sonner";
 import React, { useState, useEffect } from "react";
 import LandingPage from "./components/LandingPage";
@@ -70,9 +69,8 @@ export default function App() {
             onClick={() => setCurrentPage("history")}
             className="text-sm text-gray-600 hover:text-gray-800"
           >
-            Saved
+            History
           </button>
-          <SignOutButton />
         </div>
       </header>
       <main className="flex-1 flex items-center justify-center p-4">
